@@ -1,5 +1,7 @@
 = Cahier des *charges* V1   
-image::https://upload.wikimedia.org/wikipedia/fr/8/8a/Logo_IUT_Blagnac.png[a diagram illustrating the pipeline stages]
+
+image::https://upload.wikimedia.org/wikipedia/fr/8/8a/Logo_IUT_Blagnac.png
+image::https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg[Tux,250,350]
 
 
 == 1. Contexte de la SAE 2.01 et 2.05 
