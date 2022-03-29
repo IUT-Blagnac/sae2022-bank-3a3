@@ -3,7 +3,7 @@
 You can find image:https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg[Linux,25,35] everywhere these days.*
 
 
-image::https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg[Tux,250,350]
+image::https://upload.wikimedia.org/wikipedia/fr/8/8a/Logo_IUT_Blagnac.png[Tux,250,350]
 
 
 == 1. Contexte de la SAE 2.01 et 2.05 
