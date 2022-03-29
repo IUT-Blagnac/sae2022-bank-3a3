@@ -1,35 +1,35 @@
 = Cahier des *charges* V1   
 
-You can find image:https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg[Linux,50,35] everywhere these days.*
+everywhere these days.*
 
 
 image::https://upload.wikimedia.org/wikipedia/fr/8/8a/Logo_IUT_Blagnac.png[Tux,400,350]
 
+*Date*
+29/03/2022
+
+.*Groupe*
+* Andrew Phakeovillay
+* Egxon Zejnullahi
+* Karim Zouli-Barrere
 
 == 1. Contexte de la SAE 2.01 et 2.05 
 
 Le but de notre SAE est d'accentuer nos efforts de restructuration et d'investissement dans le digital
 pour s'adapter aux exigences d'instantanéité de nos clients.
 
-== 2. Groupe 
-.Notre groupe de travail est constitué de :
-* Andrew Phakeovillay
-* Egxon Zejnullahi
-* Karim Zouli-Barrere
-
-
-== 3. Le Sujet 
+== 2. Le Sujet 
 
 La banque DailyBank veut développer une application JAVA-Oracle de gestion de comptes clients
 pour remplacer plusieurs outils obsolètes (Dépassé, périmé). Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
 
 
-== 4.  Objectifs
+== 3.  Objectifs
 
 L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet.
 
 
-== 5. Délais 
+== 4. Délais 
 
 La SAE 2.01 et 2.05 à commancé la semaine 10 de 2022 et doit etre fini pour la semaine 23.
 Cela sera le rendu final du projet.
