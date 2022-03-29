@@ -1,6 +1,6 @@
 = Cahier des *charges* V1   
 
-You can find image:https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg[Linux,25,35] everywhere these days.
+You can find image:https://static.wikia.nocookie.net/leagueoflegends/images/c/ce/Jax_Render.png/revision/latest/scale-to-width-down/335?cb=20200131221717[Linux,25,35] everywhere these days.
 
 
 
