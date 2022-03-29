@@ -12,10 +12,10 @@ Le but de notre SAE est d'accentuer nos efforts de restructuration et d'investis
 pour s'adapter aux exigences d'instantanéité de nos clients.
 
 == 2. Groupe 
-.Notre groupe de travail est constitué de:
-* Edgar Allan Poe
-* Sheri S. Tepper
-* Bill Bryson
+.Notre groupe de travail est constitué de :
+* Andrew Phakeovillay
+* Egxon Zejnullahi
+* Karim Zouli-Barrere
 
 
 == 3. Le Sujet 
