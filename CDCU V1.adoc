@@ -2,8 +2,8 @@
 
 everywhere these days.*
 
+.*Cahier des charges Version 1*:https://upload.wikimedia.org/wikipedia/fr/8/8a/Logo_IUT_Blagnac.png[Linux,25,35]
 
-image::https://upload.wikimedia.org/wikipedia/fr/8/8a/Logo_IUT_Blagnac.png[Tux,400,350]
 
 .*Date*
 29/03/2022
