@@ -1,11 +1,5 @@
 = Cahier des *charges* V1   
 
-Cahier des charges version:https://upload.wikimedia.org/wikipedia/fr/8/8a/Logo_IUT_Blagnac.png[Linux,25,35]1.
-
-Cahier des charges:https://upload.wikimedia.org/wikipedia/fr/8/8a/Logo_IUT_Blagnac.png[Linux,25,35] everywhere these days.
-
-
-
 .*Date*
 29/03/2022
 
