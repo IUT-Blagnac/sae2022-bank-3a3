@@ -13,9 +13,12 @@ pour s'adapter aux exigences d'instantanéité de nos clients.
 
 == 2. Groupe 
 Notre groupe de travail est constitué de:
-*Andrew Phakeovillay
-*Egxon Zejnullahi
-*Karim Zouli-Barrere
+.Possible DefOps manual locations
+* West wood maze
+** Maze heart
+*** Reflection pool
+** Secret exit
+* Untracked file in git repository
 
 
 == 3. Le Sujet 
