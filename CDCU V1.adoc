@@ -13,9 +13,9 @@ pour s'adapter aux exigences d'instantanéité de nos clients.
 
 == 2. Groupe 
 Notre groupe de travail est constitué de:
--Andrew Phakeovillay
--Egxon Zejnullahi
--Karim Zouli-Barrere
+*Andrew Phakeovillay
+*Egxon Zejnullahi
+*Karim Zouli-Barrere
 
 
 == 3. Le Sujet 
