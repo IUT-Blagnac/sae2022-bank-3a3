@@ -24,17 +24,12 @@ La banque DailyBank veut développer une application JAVA-Oracle de gestion de c
 pour remplacer plusieurs outils obsolètes (Dépassé, périmé). Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
 
 
-
 == 4.  Objectifs
 
 L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet.
 
 
-== 5.  Objectifs
-
-L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet.
-
-== 6. Délais 
+== 5. Délais 
 
 La SAE 2.01 et 2.05 à commancé la semaine 10 de 2022 et doit etre fini pour la semaine 23.
 Cela sera le rendu final du projet.
