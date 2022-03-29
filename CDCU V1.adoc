@@ -5,7 +5,7 @@ everywhere these days.*
 
 image::https://upload.wikimedia.org/wikipedia/fr/8/8a/Logo_IUT_Blagnac.png[Tux,400,350]
 
-*Date*
+.*Date*
 29/03/2022
 
 .*Groupe*
