@@ -1,7 +1,6 @@
 = Cahier des *charges* V1   
 
-Cahier des charges Version 1:https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbdWH0QU9_6SsiQYs7ZuCmJHm58iS_cnzqpz0CLEVUuI9XK_QuEGjx3uxWjP4u7eLDQnM&usqp=CAU[Linux,25,35].
-
+You can find image:https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg[Linux,25,35] everywhere these days.
 
 
 
