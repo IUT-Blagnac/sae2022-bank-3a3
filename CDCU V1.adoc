@@ -1,30 +1,62 @@
-= Cahier des *charges* V1   
+= Cahier des *charges* V1
+:toc:
+:toc-title: Sommaire
 
 .*Date*
 29/03/2022
 
-.*Groupe*
+.*Groupe 3A3*
 * Andrew Phakeovillay
 * Egxon Zejnullahi
 * Karim Zouli-Barrere
 
-== 1. Contexte de la SAE 2.01 et 2.05 
+
+*Projet* 
 
 Le but de notre SAE est d'accentuer nos efforts de restructuration et d'investissement dans le digital
 pour s'adapter aux exigences d'instantanéité de nos clients.
 
-== 2. Le Sujet 
+
+
+== 1. Présentation du sujet
+=== Contexte
 
 La banque DailyBank veut développer une application JAVA-Oracle de gestion de comptes clients
 pour remplacer plusieurs outils obsolètes (Dépassé, périmé). Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
 
-
-== 3.  Objectifs
+=== Objectifs
 
 L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet.
 
 
-== 4. Délais 
+
+== 2.  Analyse de l’existant
+
+.Dans la version existante de l'application, le guichetier peut:
+* Modifier informations client (adresse, téléphone, …)
+* Créer un nouveau client
+* Consulter un compte
+* Débiter un compte (BD)
+
+.Puis, le chef d'agent peut:
+* Rendre inactif un client
+
+
+
+== 3. Analyse des besoins
+
+.Pour la version 1, le guichetier devra aussi:
+* Créditer/débiter un compte (java et BD avec procédure stockée)
+* Créer un compte
+* Effectuer un virement de compte à compte
+* Clôturer un compte
+
+.Et le chef D'agence devra aussi:
+* Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
+
+
+
+== 4. Analyse des contraintes
 
 La SAE 2.01 et 2.05 à commancé la semaine 10 de 2022 et doit etre fini pour la semaine 23.
 Cela sera le rendu final du projet.
