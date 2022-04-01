@@ -38,9 +38,10 @@ L’application doit permettre de gérer des comptes bancaires de dépôt pour d
 * Consulter un compte
 * Débiter un compte (BD)
 
-.Puis, le chef d'agent peut:
+.Puis, le chef d'agence peut:
 * Rendre inactif un client
 
+image::http://www.plantuml.com/plantuml/svg/RSz1JWCn38NXVKvXpGPOp1MgeYAnOWCd29at7Ol4hXm7XCI5UevUZ7Gg0K9Tnl-doDvMZ-Qjv53VM0xHOg6ONEt5FpCeVg1gGSYOdLp9UByuJMn8pYeX38-Dqm9ds42nKd-6ORTWfkdcVWz9MCVdIUYDnd53jqywySmmogZ4Cckbb1dYTxzcPwTZ5qr8jBqZjYj4fRRi5vMq71n_wiFf-Ch_uhhOEJv39WEnn7x7tCdFxnSoVctMKyAsmrRoDm00[V0]
 
 == 3. Analyse des besoins
 
@@ -53,8 +54,10 @@ L’application doit permettre de gérer des comptes bancaires de dépôt pour d
 * Effectuer un virement de compte à compte
 * Clôturer un compte
 
-.Et le chef D'agence pourra aussi:
+.Et le chef d'agence pourra aussi:
 * Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
+
+image::http://www.plantuml.com/plantuml/svg/TP1FJa8n48VtFSM4ZR8Wte1WqB1oeoUexQymiN_8T8eXyJ1ktzuRl8i93unY7ilEz-NBJ1TLhMXBqTGtpbihDf5rMkH5zn5atr5BWea8Ibf8UBrHyYnmoYKRCrarTXieGoPaAnsUPhBS892_kLyZEmpZuyGS6CrcSxfzAfu3GoYY4kTGAhd8o3hzTPRITn1gcN9fEzWsefHSMzIJvKhQAlxGXxvxvNzmMEm8dv6zW3XRfnm6PQZ_ABEF-N3AnJh-cBlp8zqBxGfw305EsudkM92GbJpE9lMV8xdOVscJAqUi-axEduYqZMNVTtLgp0BPjnI_0G00[V1]
 
 === Version 2.
 
@@ -64,16 +67,18 @@ L’application doit permettre de gérer des comptes bancaires de dépôt pour d
 * Gérer (faire le « CRUD[2] ») les prélèvements automatiques
 
 
-.Et le chef D'agence devra aussi:
+.Et le chef d'agence devra aussi:
 * Effectuer un Débit exceptionnel
 * Simuler un emprunt
 * Simuler une assurance d’emprunt
+
+image::http://www.plantuml.com/plantuml/svg/TP51RXGn44NtVOhIR22B4JU8WXB82WcH4nZtxqm9kzpOLGEHE0nBUiyDV34ytQCc4tMMhl_qw__oJL6NrMBeoZUMqMKNoNbD-K6V0iZzG4aHNS2Wf8aoFnwKUixmoacwRdTlx0zGHjwHAzIUtUxsW87wD-yV8Hxp-3JfcaRx_JMz_PHw7XYP0Wgn3AcG3mpHg__CRQvJ8qn8aXtXR0D9KYpeGlaKHyKpzQvEN_c5E0SxYLyWVGQnjAuyD6HrNv3zh-kvocMU_kJthjymli1UaJuC0xpQeXuv8qAKUfn9ghytx4BzgvPVQN5Vfto-8k8OqbETojMQUTPbGKme8-1O9ugGOWZjVrPBWj3dku_htWldiJKAzSznZbl8cQRebByRsgubozhEpcTPRa_uwJ4g9n64Px4VE5fOm1Oxc-Yc27AbM7RYqSAkP7S3wIs6Vm00[V2]
 
 === Version 3.
 
 .Pour la version 3, 
 
-.Et le chef D'agence devra aussi:
+.Et le chef d'agence devra aussi:
 * Les spécifications finalisées de la version 2
 * Supers options pour les tops …
 * Développer une ou plusieurs fonctionnalités au choix et selon vos compétences
@@ -82,9 +87,8 @@ L’application doit permettre de gérer des comptes bancaires de dépôt pour d
 * Générer les relevés mensuels en PDF
 * Exécuter les prélèvements automatiques
 
+image::http://www.plantuml.com/plantuml/svg/ZL5BRjH04Dtx5ANPG1OZ90uG1HB81YH4Jj2qovaIxUwcgyfC90x34k-vGL-C6diOUz0WPUb-p_K-xuR55T4-DFoLOdR5zU2yfF8WJm71VKTEFJO1Em59KEXn9z1IGI-KOjDixfNy3eMmRC0ns6UpkTrX1-sBDuyOFKxFXvV6CDXkh-7bnzHIHrWW80F5BZ7uG1ZbQk7SbZeQGoF4f0CwlK19aJN8pFAfpu8hzAwEN-WVS39s03zZR0kQjcMbpYYdwpDb--DwYdBkfptSUzLUE7nk-pBqhklGYyxeG0Lx4uGMZqoeFo-S2_MtQFbFYliwbcEBsEUGdkh8LolFXiUPeX4A1Xpg2ARAYi7sEPq4ZF3fxlsYkxwSBL6eluR9BeDJIRqJ-gPeMekNAPqUQvcx1znxp48fHWmhsm_KQvY9Phjeb8iWWcFMug97CtjYBjGFoC2vZfuwykwWmz1HT86uZeQr2C71W8KDWjTh4Sts2YdFF-MaSrP9cLSqYp5WI3aV_II579G9jPXIYdxAPdfYnODJyBj4Uq01nc2IG-AfuJeAMWg6pLidVhSvdp0kNHytuhyZyMcPfUUz1LPvrZWt65ljmny0[V3]
 
 == 4. Analyse des contraintes
 
-La SAE 2.01 et 2.05 à commancé la semaine 10 de 2022 et doit etre fini pour la semaine 23.
-Cela sera le rendu final du projet.
 
