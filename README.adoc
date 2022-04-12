@@ -12,7 +12,7 @@ ZOULI-BARRERE Karim
 | Date    | Nom         |  Lien                             | Retour
 | 03/04   | Gantt V1    |                                                              | 
 |         | CdC V1      |                                   |   
-|         | Suivi Projet |                                   |  Il me manque le détail des issues de dév. Qui code quoi ? Seul les issues V1 sont attendues pour le moment.           
+|         | Suivi Projet |                                   |  Il me manque le détail des issues de dév. Qui code quoi ? Seul les issues V1 sont attendues pour le moment. Organiser votre repository par version.          
 | 22/04  | CdC V2/V3 final|                                     |  
 |         | Gantt V2    |                               |     
 |         | Gantt V3 |         |     
