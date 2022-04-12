@@ -10,7 +10,7 @@ ZOULI-BARRERE Karim
 [cols="1,2,2,5",options=header]
 |===
 | Date    | Nom         |  Lien                             | Retour
-| 03/04   | Gantt V1    |                                                              | 
+| 03/04   | Gantt V1    |                                                              | J'ai un GANTT générique déjà vu dans d'autres équipes :  je veux un GANTT par version avec decoupage des tâches de dev et affectées aux membres de l'équipe. Attention à l'échelle. EP
 |         | CdC V1      |                                   |   
 |         | Suivi Projet |                                   |  Il me manque le détail des issues de dév. Qui code quoi ? Seul les issues V1 sont attendues pour le moment. Organiser votre repository par version.          
 | 22/04  | CdC V2/V3 final|                                     |  
