@@ -29,8 +29,6 @@ pour remplacer plusieurs outils obsolètes (Dépassé, périmé). Ce développem
 L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet. Les banques cherchent a se digitaliser car cela permet à la banque de pouvoir gérer les comptes des clients en ligne  donc plus facilement, ils peuvent aussi gérer les problèmes en ligne. Et pour les clients, ils ne sont plus obligés de se déplacer, ils peuvent eux aussi gérer plus facilement à distance leurs comptes.
 Les banques se sont tournées vers le digital pour développer une stratégie omnicanale (utilisation simultanée et interconnectée de tous les canaux de contacts disponibles qu'ils soient physiques ou numériques, au sein de votre organisation) et mieux ciblée. Cela leur permettera à la banque d’offrir plus que de simples services et produits à leurs clients. Elles leur proposent une réelle expérience. C'est donc un gain de temps, d'énrgie, d'économie, d'écologie, d'argent pour la banque et ses clients.
 
-L'application doit permettre de gérer des comptes bancaires pour des clients préalablement crées. 
-
 === Problèmatique
 
 La problèmatique de la SAE est d'améliorer la version existante de l'application. L'application dois pouvoir répondre aux besoin de la gestions des comptes dans la banque tels que: crée un compte client, consulter un compte, créditer/débiter un compte, modifier un compte, effectuer des virements de compte à compte, simuler des emprunts, générer des relevés mensuels en PDF, etc...
