@@ -1,0 +1,109 @@
+= Cahier des *charges* V1
+:toc:
+:toc-title: Sommaire
+
+.*Date*
+29/03/2022
+
+.*Groupe 3A3*
+* Andrew Phakeovillay
+* Egxon Zejnullahi
+* Karim Zouli-Barrere
+
+
+*Projet* 
+
+Le but de notre SAE est d'accentuer nos efforts de restructuration et d'investissement dans le digital
+pour s'adapter aux exigences d'instantanéité de nos clients.
+
+
+
+== 1. Présentation du sujet
+=== Contexte
+
+La banque DailyBank veut développer une application JAVA-Oracle de gestion de comptes clients
+pour remplacer plusieurs outils obsolètes (Dépassé, périmé). Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
+
+=== Objectifs
+
+L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet.
+
+
+
+== 2.  Analyse de l’existant
+
+.Dans la version existante de l'application, le guichetier peut:
+* Modifier informations client (adresse, téléphone, …)
+* Créer un nouveau client
+* Consulter un compte
+* Débiter un compte (BD)
+
+.Puis, le chef d'agence peut:
+* Rendre inactif un client
+
+image::http://www.plantuml.com/plantuml/svg/RSz1JWCn38NXVKvXpGPOp1MgeYAnOWCd29at7Ol4hXm7XCI5UevUZ7Gg0K9Tnl-doDvMZ-Qjv53VM0xHOg6ONEt5FpCeVg1gGSYOdLp9UByuJMn8pYeX38-Dqm9ds42nKd-6ORTWfkdcVWz9MCVdIUYDnd53jqywySmmogZ4Cckbb1dYTxzcPwTZ5qr8jBqZjYj4fRRi5vMq71n_wiFf-Ch_uhhOEJv39WEnn7x7tCdFxnSoVctMKyAsmrRoDm00[V0]
+
+== 3. Analyse des besoins
+
+=== Version 1.
+ 
+.Pour la version 1, le guichetier pourra:
+
+* Créditer/débiter un compte (java et BD avec procédure stockée)
+* Créer un compte
+* Effectuer un virement de compte à compte
+* Clôturer un compte
+
+.Et le chef d'agence pourra aussi:
+* Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
+
+image::http://www.plantuml.com/plantuml/svg/TP1FJa8n48VtFSM4ZR8Wte1WqB1oeoUexQymiN_8T8eXyJ1ktzuRl8i93unY7ilEz-NBJ1TLhMXBqTGtpbihDf5rMkH5zn5atr5BWea8Ibf8UBrHyYnmoYKRCrarTXieGoPaAnsUPhBS892_kLyZEmpZuyGS6CrcSxfzAfu3GoYY4kTGAhd8o3hzTPRITn1gcN9fEzWsefHSMzIJvKhQAlxGXxvxvNzmMEm8dv6zW3XRfnm6PQZ_ABEF-N3AnJh-cBlp8zqBxGfw305EsudkM92GbJpE9lMV8xdOVscJAqUi-axEduYqZMNVTtLgp0BPjnI_0G00[V1]
+
+=== Version 2.
+
+.Pour la version 2, le guichetier pourra:
+
+* Générer un relevé mensuel d’un compte en PDF
+* Gérer (faire le « CRUD[2] ») les prélèvements automatiques
+
+
+.Et le chef d'agence devra aussi:
+* Effectuer un Débit exceptionnel
+* Simuler un emprunt
+* Simuler une assurance d’emprunt
+
+image::http://www.plantuml.com/plantuml/svg/TP51RXGn44NtVOhIR22B4JU8WXB82WcH4nZtxqm9kzpOLGEHE0nBUiyDV34ytQCc4tMMhl_qw__oJL6NrMBeoZUMqMKNoNbD-K6V0iZzG4aHNS2Wf8aoFnwKUixmoacwRdTlx0zGHjwHAzIUtUxsW87wD-yV8Hxp-3JfcaRx_JMz_PHw7XYP0Wgn3AcG3mpHg__CRQvJ8qn8aXtXR0D9KYpeGlaKHyKpzQvEN_c5E0SxYLyWVGQnjAuyD6HrNv3zh-kvocMU_kJthjymli1UaJuC0xpQeXuv8qAKUfn9ghytx4BzgvPVQN5Vfto-8k8OqbETojMQUTPbGKme8-1O9ugGOWZjVrPBWj3dku_htWldiJKAzSznZbl8cQRebByRsgubozhEpcTPRa_uwJ4g9n64Px4VE5fOm1Oxc-Yc27AbM7RYqSAkP7S3wIs6Vm00[V2]
+
+=== Version 3.
+
+.Pour la version 3, 
+
+.Et le chef d'agence devra aussi:
+* Les spécifications finalisées de la version 2
+* Supers options pour les tops …
+* Développer une ou plusieurs fonctionnalités au choix et selon vos compétences
+
+.« Batch »:
+* Générer les relevés mensuels en PDF
+* Exécuter les prélèvements automatiques
+
+image::http://www.plantuml.com/plantuml/svg/ZL51RjH04Bpx5QszG0uh91uG1PAG2qY8l60OjxCjnZF3TBVPI3o68xxpW_aOlVRYTT16oisUgkwgwhfYSKMq3mr_evXTSJquBwdSosD0S3-GKuzDm4v04XHws0cqLD0BfTWqcpiblqCXB1jm3FRRRAvts47xwjq3He_Jy-6bCGossqju_IcrrDa416IWs2K67mYZN9murwMEnj08CUc0JizGKcGDChDywhFW2hsfurVw3voC7S0l6Dk2fcrPgJFAidscR7zUJb6U-caF-zwqPnO_eJq3tNOTUj4P7QXWRuBGuf49zTUPTQ7-4ItFfBYhOpbU4ViSqcCT-MBbsV0uKsowOC2XZc2gh1YidsKbO8JFDnzEkklDsHA5-dkOx38ubTGxeU-AfhLucTFfyIppxG7t7hDGYX73olOzzHfcejak6kKiYE2OjRZeqSmkp1Fr8p9mhgEdZhmxw31q55qWhgDXBK9mC61XW-3jMaIplKBAyr1EEcULb7b5inW3XfJpqKzIo46PK6suIz5FsKnFxF3W5FmkqHvGW6tCIauyNRYEWfQ2OVFUYTzjBCJq0UkIPWV7blXVJRnqSvgutLjcbPVqSuMnrJxy1G00[V3]
+
+== 4. Analyse des contraintes
+
+=== Contraintes version 1
+
+* On ne peut que créditer un compte que si l'argent est supérieur à 0 
+* On peut débiter tant qu'on ne dépasse la limite du découvert
+* Les virements de compte à compte ne doivent également pas dépasser la limite.
+* Pour clôturer un compte, il faut que le compte supérieur ou égale à 0
+
+=== Contraintes version 2
+
+* Echouer si la quantité nécessaire n'est pas présente dans le compte
+
+=== Contraintes version 3
+
+* On a pas de contraintes
+
+
