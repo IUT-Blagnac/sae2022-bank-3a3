@@ -19,7 +19,7 @@ pour s'adapter aux exigences d'instantanéité de nos clients.
 === Organisation de l'équipe
 Pour cette première semaine, nous avons travaillé le CDCU depuis le GitHub directement, Karim a effectué le gantt par ProjectLibre puis a adapté les informations sur LibreOffice afin de l'exporter en PDF.
 
-.La semaine 13 nous avons:
+.La semaine 13 nous avons :
 * Rédigé en asciidoc le CDCU V1
 * Fait le GANTT V1
 
