@@ -36,7 +36,7 @@ Les banques se sont tournées vers le digital pour développer une stratégie om
 
 === Problèmatique
 
-La problèmatique de la SAE est d'améliorer la version existante de l'application. L'application dois pouvoir répondre aux besoin de la gestions des comptes dans la banque tels que: crée un compte client, consulter un compte, créditer/débiter un compte, modifier un compte, effectuer des virements de compte à compte, simuler des emprunts, générer des relevés mensuels en PDF, etc...
+La problèmatique de la SAE est d'améliorer la version existante de l'application. L'application doit pouvoir répondre aux besoin de la gestion des comptes dans la banque tels que : crée un compte client, consulter un compte, créditer/débiter un compte, modifier un compte, effectuer des virements de compte à compte, simuler des emprunts, générer des relevés mensuels en PDF, etc...
 
 
 == 2.  Analyse de l’existant
