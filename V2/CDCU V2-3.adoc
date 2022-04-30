@@ -1,0 +1,115 @@
+= Cahier des *charges* V1
+:toc:
+:toc-title: Sommaire
+
+.*Date*
+29/03/2022
+
+.*Groupe 3A3*
+* Andrew Phakeovillay
+* Egxon Zejnullahi
+* Karim Zouli-Barrere
+
+
+*Projet* 
+
+Le but de notre SAE est d'accentuer nos efforts de restructuration et d'investissement dans le digital
+pour s'adapter aux exigences d'instantanéité de nos clients.
+
+=== Organisation de l'équipe
+
+Pour cette première semaine, nous avons travaillé le CDCU depuis le GitHub directement, Karim a effectué le gantt par ProjectLibre puis a adapté les informations sur LibreOffice afin de l'exporter en PDF.
+
+.La semaine 13 nous avons :
+* Rédigé en asciidoc le CDCU V1
+* Fait le GANTT V1
+
+== 1. Présentation du sujet
+
+=== Contexte
+
+La banque DailyBank veut développer une application JAVA-Oracle de gestion de comptes clients
+pour remplacer plusieurs outils obsolètes (Dépassé, périmé). Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
+
+=== Objectifs
+
+L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet. Les banques cherchent a se digitaliser car cela permet à la banque de pouvoir gérer les comptes des clients en ligne  donc plus facilement, ils peuvent aussi gérer les problèmes en ligne. Et pour les clients, ils ne sont plus obligés de se déplacer, ils peuvent eux aussi gérer plus facilement à distance leurs comptes.
+Les banques se sont tournées vers le digital pour développer une stratégie omnicanale (utilisation simultanée et interconnectée de tous les canaux de contacts disponibles qu'ils soient physiques ou numériques, au sein de votre organisation) et mieux ciblée. Cela leur permettera à la banque d’offrir plus que de simples services et produits à leurs clients. Elles leur proposent une réelle expérience. C'est donc un gain de temps, d'énrgie, d'économie, d'écologie, d'argent pour la banque et ses clients.
+
+=== Problèmatique
+
+La problèmatique de la SAE est d'améliorer la version existante de l'application. L'application dois pouvoir répondre aux besoin de la gestions des comptes dans la banque tels que: crée un compte client, consulter un compte, créditer/débiter un compte, modifier un compte, effectuer des virements de compte à compte, simuler des emprunts, générer des relevés mensuels en PDF, etc...
+
+
+== 2.  Analyse de l’existant
+
+.Dans la version existante de l'application, le guichetier peut:
+* Modifier informations client (adresse, téléphone, …)
+* Créer un nouveau client
+* Consulter un compte
+* Débiter un compte (BD)
+* Créditer/débiter un compte (java et BD avec procédure stockée)
+* Créer un compte
+* Effectuer un virement de compte à compte
+* Clôturer un compte
+
+.Puis, le chef d'agence peut:
+* Rendre inactif un client
+* Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
+
+image::http://www.plantuml.com/plantuml/svg/TP1FJa8n48VtFSM4ZR8Wte1WqB1oeoUexQymiN_8T8eXyJ1ktzuRl8i93unY7ilEz-NBJ1TLhMXBqTGtpbihDf5rMkH5zn5atr5BWea8Ibf8UBrHyYnmoYKRCrarTXieGoPaAnsUPhBS892_kLyZEmpZuyGS6CrcSxfzAfu3GoYY4kTGAhd8o3hzTPRITn1gcN9fEzWsefHSMzIJvKhQAlxGXxvxvNzmMEm8dv6zW3XRfnm6PQZ_ABEF-N3AnJh-cBlp8zqBxGfw305EsudkM92GbJpE9lMV8xdOVscJAqUi-axEduYqZMNVTtLgp0BPjnI_0G00[V1]
+
+Les utilisateurs de l'application sont les clients qui pourront effectuer des fonctionnalités, ils pourront intéragir avec leurs informations, consulter, débiter leurs comptes ou se rendre inactif.
+Un guichetier peut être un chef d'agence. De plus, le chef d'agence peut rendre inactif un client, c'est-à-dire le désactiver ou suspendre ses comptes.
+Le guichetier pourra désormais créer un compte ou plusieurs pour un client, également effectuer des virements de compte à compte et fermer un compte si le client ne l'utilise plus.
+Le chef d'agence sera capable de gérer les données des employés, créer des données, les lire, les mettre à jour et supprimer les données, ce qui permettra de mieux manipuler les données, pouvoir mettre mettre à jour les informations des employés si il y a des changements par rapport à la banque et de moins saturer l'application par des employés obsolètes.
+
+== 3. Analyse des besoins
+
+=== Version 2.
+
+.Pour la version 2, le guichetier pourra:
+
+* Générer un relevé mensuel d’un compte en PDF
+* Gérer (faire le « CRUD[2] ») les prélèvements automatiques
+
+.Et le chef d'agence devra aussi:
+* Effectuer un Débit exceptionnel
+* Simuler un emprunt
+* Simuler une assurance d’emprunt
+
+image::http://www.plantuml.com/plantuml/svg/TP51RXGn44NtVOhIR22B4JU8WXB82WcH4nZtxqm9kzpOLGEHE0nBUiyDV34ytQCc4tMMhl_qw__oJL6NrMBeoZUMqMKNoNbD-K6V0iZzG4aHNS2Wf8aoFnwKUixmoacwRdTlx0zGHjwHAzIUtUxsW87wD-yV8Hxp-3JfcaRx_JMz_PHw7XYP0Wgn3AcG3mpHg__CRQvJ8qn8aXtXR0D9KYpeGlaKHyKpzQvEN_c5E0SxYLyWVGQnjAuyD6HrNv3zh-kvocMU_kJthjymli1UaJuC0xpQeXuv8qAKUfn9ghytx4BzgvPVQN5Vfto-8k8OqbETojMQUTPbGKme8-1O9ugGOWZjVrPBWj3dku_htWldiJKAzSznZbl8cQRebByRsgubozhEpcTPRa_uwJ4g9n64Px4VE5fOm1Oxc-Yc27AbM7RYqSAkP7S3wIs6Vm00[V2]
+
+
+
+=== Version 3.
+
+.Pour la version 3, 
+
+.Et le chef d'agence devra aussi:
+* Les spécifications finalisées de la version 2
+* Supers options pour les tops …
+* Développer une ou plusieurs fonctionnalités au choix et selon vos compétences
+
+.« Batch »:
+* Générer les relevés mensuels en PDF
+* Exécuter les prélèvements automatiques
+
+image::http://www.plantuml.com/plantuml/svg/ZL51RjH04Bpx5QszG0uh91uG1PAG2qY8l60OjxCjnZF3TBVPI3o68xxpW_aOlVRYTT16oisUgkwgwhfYSKMq3mr_evXTSJquBwdSosD0S3-GKuzDm4v04XHws0cqLD0BfTWqcpiblqCXB1jm3FRRRAvts47xwjq3He_Jy-6bCGossqju_IcrrDa416IWs2K67mYZN9murwMEnj08CUc0JizGKcGDChDywhFW2hsfurVw3voC7S0l6Dk2fcrPgJFAidscR7zUJb6U-caF-zwqPnO_eJq3tNOTUj4P7QXWRuBGuf49zTUPTQ7-4ItFfBYhOpbU4ViSqcCT-MBbsV0uKsowOC2XZc2gh1YidsKbO8JFDnzEkklDsHA5-dkOx38ubTGxeU-AfhLucTFfyIppxG7t7hDGYX73olOzzHfcejak6kKiYE2OjRZeqSmkp1Fr8p9mhgEdZhmxw31q55qWhgDXBK9mC61XW-3jMaIplKBAyr1EEcULb7b5inW3XfJpqKzIo46PK6suIz5FsKnFxF3W5FmkqHvGW6tCIauyNRYEWfQ2OVFUYTzjBCJq0UkIPWV7blXVJRnqSvgutLjcbPVqSuMnrJxy1G00[V3]
+
+
+
+== 4. Analyse des contraintes
+
+* Avoir une machine virtuelle Java, installer Java JDK 1.8
+
+* Avoir un environnement IDE : Eclipse
+
+* Avoir une base de données de gestion de la relation client
+
+* Avoir plus de 1G de mémoire afin de faire fonctionner l'application
+
+* Durée totale du projet : 11 semaines
+
+* 5 semaines de développement
+
