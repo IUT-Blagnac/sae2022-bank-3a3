@@ -24,6 +24,13 @@ Pour cette première semaine, nous avons travaillé le CDCU depuis le GitHub dir
 * Rédigé en asciidoc le CDCU V1
 * Fait le GANTT V1
 
+Pour la semaine 16, nous avons effectué les changements par rapport aux commentaires et fait la documentation Technique, la documentation utilisateur de la V0 et le cahier de TEST V1 par LibreOffice puis exportés en PDF.
+
+.La semaine 16 nous avons :
+* Modifié le CDCU V1
+* Régigé en asciidoc le CDCU V2-V3
+* 
+
 == 1. Présentation du sujet
 
 === Contexte
