@@ -68,57 +68,23 @@ Un guichetier peut être un chef d'agence. De plus, le chef d'agence peut rendre
 
 .Et le chef d'agence pourra aussi:
 * Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
-ou
+
 image::http://www.plantuml.com/plantuml/svg/TP1FJa8n48VtFSM4ZR8Wte1WqB1oeoUexQymiN_8T8eXyJ1ktzuRl8i93unY7ilEz-NBJ1TLhMXBqTGtpbihDf5rMkH5zn5atr5BWea8Ibf8UBrHyYnmoYKRCrarTXieGoPaAnsUPhBS892_kLyZEmpZuyGS6CrcSxfzAfu3GoYY4kTGAhd8o3hzTPRITn1gcN9fEzWsefHSMzIJvKhQAlxGXxvxvNzmMEm8dv6zW3XRfnm6PQZ_ABEF-N3AnJh-cBlp8zqBxGfw305EsudkM92GbJpE9lMV8xdOVscJAqUi-axEduYqZMNVTtLgp0BPjnI_0G00[V1]
 
 Le guichetier pourra désormais créer un compte ou plusieurs pour un client, également effectuer des virements de compte à compte et fermer un compte si le client ne l'utilise plus.
 Le chef d'agence sera capable de gérer les données des employés, créer des données, les lire, les mettre à jour et supprimer les données, ce qui permettra de mieux manipuler les données, pouvoir mettre mettre à jour les informations des employés si il y a des changements par rapport à la banque et de moins saturer l'application par des employés obsolètes.
 
-=== Version 2.
-
-.Pour la version 2, le guichetier pourra:
-
-* Générer un relevé mensuel d’un compte en PDF
-* Gérer (faire le « CRUD[2] ») les prélèvements automatiques
-
-
-.Et le chef d'agence devra aussi:
-* Effectuer un Débit exceptionnel
-* Simuler un emprunt
-* Simuler une assurance d’emprunt
-
-image::http://www.plantuml.com/plantuml/svg/TP51RXGn44NtVOhIR22B4JU8WXB82WcH4nZtxqm9kzpOLGEHE0nBUiyDV34ytQCc4tMMhl_qw__oJL6NrMBeoZUMqMKNoNbD-K6V0iZzG4aHNS2Wf8aoFnwKUixmoacwRdTlx0zGHjwHAzIUtUxsW87wD-yV8Hxp-3JfcaRx_JMz_PHw7XYP0Wgn3AcG3mpHg__CRQvJ8qn8aXtXR0D9KYpeGlaKHyKpzQvEN_c5E0SxYLyWVGQnjAuyD6HrNv3zh-kvocMU_kJthjymli1UaJuC0xpQeXuv8qAKUfn9ghytx4BzgvPVQN5Vfto-8k8OqbETojMQUTPbGKme8-1O9ugGOWZjVrPBWj3dku_htWldiJKAzSznZbl8cQRebByRsgubozhEpcTPRa_uwJ4g9n64Px4VE5fOm1Oxc-Yc27AbM7RYqSAkP7S3wIs6Vm00[V2]
-
-=== Version 3.
-
-.Pour la version 3, 
-
-.Et le chef d'agence devra aussi:
-* Les spécifications finalisées de la version 2
-* Supers options pour les tops …
-* Développer une ou plusieurs fonctionnalités au choix et selon vos compétences
-
-.« Batch »:
-* Générer les relevés mensuels en PDF
-* Exécuter les prélèvements automatiques
-
-image::http://www.plantuml.com/plantuml/svg/ZL51RjH04Bpx5QszG0uh91uG1PAG2qY8l60OjxCjnZF3TBVPI3o68xxpW_aOlVRYTT16oisUgkwgwhfYSKMq3mr_evXTSJquBwdSosD0S3-GKuzDm4v04XHws0cqLD0BfTWqcpiblqCXB1jm3FRRRAvts47xwjq3He_Jy-6bCGossqju_IcrrDa416IWs2K67mYZN9murwMEnj08CUc0JizGKcGDChDywhFW2hsfurVw3voC7S0l6Dk2fcrPgJFAidscR7zUJb6U-caF-zwqPnO_eJq3tNOTUj4P7QXWRuBGuf49zTUPTQ7-4ItFfBYhOpbU4ViSqcCT-MBbsV0uKsowOC2XZc2gh1YidsKbO8JFDnzEkklDsHA5-dkOx38ubTGxeU-AfhLucTFfyIppxG7t7hDGYX73olOzzHfcejak6kKiYE2OjRZeqSmkp1Fr8p9mhgEdZhmxw31q55qWhgDXBK9mC61XW-3jMaIplKBAyr1EEcULb7b5inW3XfJpqKzIo46PK6suIz5FsKnFxF3W5FmkqHvGW6tCIauyNRYEWfQ2OVFUYTzjBCJq0UkIPWV7blXVJRnqSvgutLjcbPVqSuMnrJxy1G00[V3]
-
 == 4. Analyse des contraintes
 
-=== Contraintes version 1
+* Avoir une machine virtuelle Java, installer Java JDK 1.8
 
-* On ne peut que créditer un compte que si l'argent est supérieur à 0 
-* On peut débiter tant qu'on ne dépasse la limite du découvert
-* Les virements de compte à compte ne doivent également pas dépasser la limite.
-* Pour clôturer un compte, il faut que le compte supérieur ou égale à 0
+* Avoir un environnement IDE : Eclipse
 
-=== Contraintes version 2
+* Avoir une base de données de gestion de la relation client
 
-* Echouer si la quantité nécessaire n'est pas présente dans le compte
+* Avoir plus de 1G de mémoire afin de faire fonctionner l'application
 
-=== Contraintes version 3
+* Durée totale du projet : 11 semaines
 
-* On a pas de contraintes
-
+* 5 semaines de développement
 
