@@ -24,14 +24,16 @@ Pour cette première semaine, nous avons travaillé le CDCU depuis le GitHub dir
 * Fait le GANTT V1
 
 == 1. Présentation du sujet
+
 === Contexte
 
 La banque DailyBank veut développer une application JAVA-Oracle de gestion de comptes clients
 pour remplacer plusieurs outils obsolètes (Dépassé, périmé). Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
 
-=== Objectifs
+=== Objectif
 
-L’application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés. Elle devra permettre de débiter, créditer un compte soit par virement c’est à dire un échange d’argent entre deux comptes distincts mais domiciliés dans le réseau bancaire, soit par une personne physique se présentant devant un guichet. Les banques cherchent a se digitaliser car cela permet à la banque de pouvoir gérer les comptes des clients en ligne donc plus facilement, ils peuvent aussi gérer les problèmes en ligne. Et pour les clients, ils ne sont plus obligés de se déplacer, ils peuvent eux aussi gérer plus facilement à distance leurs comptes. Les banques se sont tournées vers le digital pour développer une stratégie omnicanale (utilisation simultanée et interconnectée de tous les canaux de contacts disponibles qu’ils soient physiques ou numériques, au sein de votre organisation) et mieux ciblée. Cela leur permettra à la banque d’offrir plus que de simples services et produits à leurs clients. Elles leur proposent une réelle expérience. C’est donc un gain de temps, d’énergie, d’économie, d’écologie, d’argent pour la banque et ses clients.
+L'objectif du projet est de créer une application pour la banque qui permet de gérer des comptes bancaires en ayant des fonctionnalités tels que débiter, créditer, virement, consultation, etc... +
+Les banques cherchent a se digitaliser car cela permet à la banque de pouvoir gérer les comptes des clients en ligne donc plus facilement, ils peuvent aussi gérer les problèmes en ligne. Et pour les clients, ils ne sont plus obligés de se déplacer, ils peuvent eux aussi gérer plus facilement à distance leurs comptes. Les banques se sont tournées vers le digital pour développer une stratégie omnicanale (utilisation simultanée et interconnectée de tous les canaux de contacts disponibles qu’ils soient physiques ou numériques, au sein de votre organisation) et mieux ciblée. Cela leur permettra à la banque d’offrir plus que de simples services et produits à leurs clients. Elles leur proposent une réelle expérience. C’est donc un gain de temps, d’énergie, d’économie, d’écologie, d’argent pour la banque et ses clients.
 
 === Problèmatique
 
