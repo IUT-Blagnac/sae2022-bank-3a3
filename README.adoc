@@ -16,7 +16,7 @@ ZOULI-BARRERE Karim
 | 22/04  | CdC V2/V3 final|  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/CDCU%20V2-3.adoc  |  
 |         | Gantt V2    | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/GANTTV2.pdf  |     
 |         | Gantt V3 |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V3/GANTTV3.pdf  |     
-|         | Doc. Tec. V1 |        |    
+|         | Doc. Tec. V1 |   https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Documentation_Technique_V1.pdf     |    
 |         | Doc User V1    |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Documentation_Utilisateur_V1.pdf  |
 |         | Recette V1  |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Cahier_de_recette_V1.pdf  | 
 |         | Suivi projet|   | 
