@@ -50,7 +50,7 @@ La problématique de la SAE est d'améliorer la version existante de l'applicati
 .Puis, le chef d'agence peut:
 * Rendre inactif un client
 
-image::http://www.plantuml.com/plantuml/svg/RSz1JWCn38NXVKvXpGPOp1MgeYAnOWCd29at7Ol4hXm7XCI5UevUZ7Gg0K9Tnl-doDvMZ-Qjv53VM0xHOg6ONEt5FpCeVg1gGSYOdLp9UByuJMn8pYeX38-Dqm9ds42nKd-6ORTWfkdcVWz9MCVdIUYDnd53jqywySmmogZ4Cckbb1dYTxzcPwTZ5qr8jBqZjYj4fRRi5vMq71n_wiFf-Ch_uhhOEJv39WEnn7x7tCdFxnSoVctMKyAsmrRoDm00[V0]
+image::/images/v0.png
 
 Les utilisateurs de l'application sont les clients qui pourront effectuer des fonctionnalités, ils pourront interagir avec leurs informations, consulter, débiter leurs comptes ou se rendre inactif. +
 Un guichetier peut être un chef d'agence. De plus, le chef d'agence peut rendre inactif un client, c'est-à-dire le désactiver ou suspendre ses comptes.
