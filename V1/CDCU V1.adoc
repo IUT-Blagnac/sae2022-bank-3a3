@@ -50,7 +50,7 @@ La problématique de la SAE est d'améliorer la version existante de l'applicati
 .Puis, le chef d'agence peut:
 * Rendre inactif un client
 
-image::http://www.plantuml.com/plantuml/svg/RSz1JWCn38NXVKvXpGPOp1MgeYAnOWCd29at7Ol4hXm7XCI5UevUZ7Gg0K9Tnl-doDvMZ-Qjv53VM0xHOg6ONEt5FpCeVg1gGSYOdLp9UByuJMn8pYeX38-Dqm9ds42nKd-6ORTWfkdcVWz9MCVdIUYDnd53jqywySmmogZ4Cckbb1dYTxzcPwTZ5qr8jBqZjYj4fRRi5vMq71n_wiFf-Ch_uhhOEJv39WEnn7x7tCdFxnSoVctMKyAsmrRoDm00[V0]
+image::https://raw.githubusercontent.com/IUT-Blagnac/sae2022-bank-3a3/main/images/v0.png[V0]
 
 Les utilisateurs de l'application sont les clients qui pourront effectuer des fonctionnalités, ils pourront interagir avec leurs informations, consulter, débiter leurs comptes ou se rendre inactif. +
 Un guichetier peut être un chef d'agence. De plus, le chef d'agence peut rendre inactif un client, c'est-à-dire le désactiver ou suspendre ses comptes.
@@ -69,7 +69,7 @@ Un guichetier peut être un chef d'agence. De plus, le chef d'agence peut rendre
 .Et le chef d'agence pourra aussi:
 * Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
 
-image::http://www.plantuml.com/plantuml/svg/TP1FJa8n48VtFSM4ZR8Wte1WqB1oeoUexQymiN_8T8eXyJ1ktzuRl8i93unY7ilEz-NBJ1TLhMXBqTGtpbihDf5rMkH5zn5atr5BWea8Ibf8UBrHyYnmoYKRCrarTXieGoPaAnsUPhBS892_kLyZEmpZuyGS6CrcSxfzAfu3GoYY4kTGAhd8o3hzTPRITn1gcN9fEzWsefHSMzIJvKhQAlxGXxvxvNzmMEm8dv6zW3XRfnm6PQZ_ABEF-N3AnJh-cBlp8zqBxGfw305EsudkM92GbJpE9lMV8xdOVscJAqUi-axEduYqZMNVTtLgp0BPjnI_0G00[V1]
+image::https://raw.githubusercontent.com/IUT-Blagnac/sae2022-bank-3a3/main/images/v1.png[V1]
 
 Le guichetier pourra désormais créer un compte ou plusieurs pour un client, également effectuer des virements de compte à compte et fermer un compte si le client ne l'utilise plus. +
 Le chef d'agence sera capable de gérer les données des employés, créer des données, les lire, les mettre à jour et supprimer les données, ce qui permettra de mieux manipuler les données, pouvoir mettre mettre à jour les informations des employés si il y a des changements par rapport à la banque et de moins saturer l'application par des employés obsolètes.
