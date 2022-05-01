@@ -35,8 +35,8 @@ Pour la semaine 16, nous avons effectué les changements par rapport aux comment
 
 === Contexte
 
-La banque DailyBank veut développer une application JAVA-Oracle de gestion de comptes clients
-pour remplacer plusieurs outils obsolètes (Dépassé, périmé). Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau. Vous travaillerez à partir d’une application existante « Daily Bank » qu’il faudra adapter aux nouveaux besoins de la banque.
+Les banques se digitalisent tous petit à petit dans le but d'accélérer les service pour les clients et donc de les attirer. Le but est de moderniser les outils de bureautique des guichetiers et des chefs d'agence. Les banques robotisent aussi certaines tâches qui les rendent automatisables.
+La banque DailyBank veut développer une application JAVA-Oracle de gestion de comptes clients pour remplacer plusieurs outils obsolètes (Dépassé, périmé). Ce développement s’inscrit dans le cadre de la restructuration de ses services bancaires et l’application sera déployée dans les 100 agences que compte son réseau.
 
 === Objectifs
 
