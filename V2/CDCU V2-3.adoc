@@ -89,6 +89,9 @@ Le chef d'agence sera capable de gérer les données des employés, créer des d
 image::http://www.plantuml.com/plantuml/svg/TP51RXGn44NtVOhIR22B4JU8WXB82WcH4nZtxqm9kzpOLGEHE0nBUiyDV34ytQCc4tMMhl_qw__oJL6NrMBeoZUMqMKNoNbD-K6V0iZzG4aHNS2Wf8aoFnwKUixmoacwRdTlx0zGHjwHAzIUtUxsW87wD-yV8Hxp-3JfcaRx_JMz_PHw7XYP0Wgn3AcG3mpHg__CRQvJ8qn8aXtXR0D9KYpeGlaKHyKpzQvEN_c5E0SxYLyWVGQnjAuyD6HrNv3zh-kvocMU_kJthjymli1UaJuC0xpQeXuv8qAKUfn9ghytx4BzgvPVQN5Vfto-8k8OqbETojMQUTPbGKme8-1O9ugGOWZjVrPBWj3dku_htWldiJKAzSznZbl8cQRebByRsgubozhEpcTPRa_uwJ4g9n64Px4VE5fOm1Oxc-Yc27AbM7RYqSAkP7S3wIs6Vm00[V2]
 
 
+Le guichetier sera capable de créer un relevé mensuel d'un compte en PDF en prenant en compte les opérations du compte, il pourra également débiter les comptes de toutes les quittances qui lui seront présentées par l’organisme bénéficiaire. +
+Le chef d'agence sera apte à effectuer un debit exceptionnel, simuler un emprunt et une assurance d'emprunt d'un client.
+
 
 === Version 3.
 
