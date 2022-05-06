@@ -13,7 +13,15 @@ ZOULI-BARRERE Karim
 | 03/04   | Gantt V1    |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/GANTTV1.pdf  | J'ai un GANTT générique déjà vu dans d'autres équipes :  je veux un GANTT par version avec decoupage des tâches de dev et affectées aux membres de l'équipe. Attention à l'échelle. EP
 |         | CdC V1      |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/CDCU%20V1.adoc  |  Pour l’instant seule la V1 est demandée. Des confusions entre contexte (étude de l’environnement eco et concurrentiel qui entraine le projet), objectif (intérêt de l’appli pour la banque) et problématique ( a quel besoin répond l’appli) à retravailler. Pour V0 présenter les USERS et leur rôle dans l’organisation. Commenter le UC V0 et notamment l’héritage. Pour V1 on peut préciser certaines fonctionnalités : ex expliquer ce qu’est rendre inactif un client, préciser "gérer" ou CRUD. Eventuellement les prioriser. Les contraintes citées sont des besoins non fonctionnels (bien d'y avoir pensé!!) :  les règles de gestion (ex pour débiter un compte). Dans les contraintes : préciser les contraintes juridiques, techniques. Présenter l’organisation de l’équipe : outils collaboratifs ainsi que dates de livraison et liste des livrables attendus.  EP
 |         | Suivi Projet |                                   |  Il me manque le détail des issues de dév. Qui code quoi ? Seul les issues V1 sont attendues pour le moment. Organiser votre repository par version.          
-| 22/04  | CdC V2/V3 final|  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/CDCU%20V2-3.adoc  |  
+| 22/04  | CdC V2/V3 final|  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/CDCU%20V2-3.adoc  |  1,5/2	Manque nom projet et client
+1/2	QQ maladresses syntaxiques mais des efforts. Des fautes d'orthographe.
+3,5/4	Confus mais l'essentiel y est.
+2,5/4	Attention même pour V2 et V3, l'existant reste V0 car vous n'avez pas encore développé. Il faut juste faire évoluer les besoins ! Pas les autres rubriques.Penser à présenter les utilisateurs , et à donner qq détails techniques sur l'appli existante.
+3/4	Vous pouvez simplifier les UC en les présentant par domaine : gestion des comptes , gestion des crédits … Expliquer ce qu'est un débit, un débit exceptionnel … un BATCH, un CRUD.
+2,5/4	Un peu confus, séparer contraintes tech et orga. Il manque les dates et contenu des livraisons, les contraintes juridiques et les règles de gestion pourtant évoqué lors de mon retour sur la V1.
+	
+14/20	
+
 |         | Gantt V2    | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/GANTTV2.pdf  |     
 |         | Gantt V3 |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V3/GANTTV3.pdf  |     
 |         | Doc. Tec. V1 |   https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Documentation_Technique_V1.pdf     |    
