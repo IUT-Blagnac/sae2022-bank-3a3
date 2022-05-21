@@ -49,7 +49,7 @@ public class AccessCompteCourant {
 				int idNumCliTROUVE = rs.getInt("idNumCli");
 
 				alResult.add(new CompteCourant(idNumCompte, debitAutorise, solde, estCloture, idNumCliTROUVE));
-				
+
 			}
 			rs.close();
 			pst.close();
@@ -125,7 +125,7 @@ public class AccessCompteCourant {
 	 * @throws ManagementRuleViolation
 	 */
 	public void updateCompteCourant(CompteCourant cc) throws RowNotFoundOrTooManyRowsException, DataAccessException,
-			DatabaseConnexionException, ManagementRuleViolation {
+	DatabaseConnexionException, ManagementRuleViolation {
 		try {
 
 			CompteCourant cAvant = this.getCompteCourant(cc.idNumCompte);
@@ -159,95 +159,95 @@ public class AccessCompteCourant {
 		}
 	}
 	public void insertCompteCourant(CompteCourant compte)
-            throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 
-        try {
+		try {
 
-            Connection con = LogToDatabase.getConnexion();
+			Connection con = LogToDatabase.getConnexion();
 
-            String query = "INSERT INTO COMPTECOURANT VALUES (" + "seq_id_compte.NEXTVAL" + ", " + "?"+ ", " + "?" + ", "
-                    + "?" + ", " + "?" + ")";
+			String query = "INSERT INTO COMPTECOURANT VALUES (" + "seq_id_compte.NEXTVAL" + ", " + "?"+ ", " + "?" + ", "
+					+ "?" + ", " + "?" + ")";
 
-            PreparedStatement pst = con.prepareStatement(query);
+			PreparedStatement pst = con.prepareStatement(query);
 
-            pst.setInt(1, compte.debitAutorise);
-            pst.setDouble(2, compte.solde);
-            pst.setInt(3, compte.idNumCli);
-            pst.setString(4,"" + compte.estCloture.charAt(0));
+			pst.setInt(1, compte.debitAutorise);
+			pst.setDouble(2, compte.solde);
+			pst.setInt(3, compte.idNumCli);
+			pst.setString(4,"" + compte.estCloture.charAt(0));
 
 
 
-            System.err.println(query);
+			System.err.println(query);
 
-            int result = pst.executeUpdate();
-            pst.close();
+			int result = pst.executeUpdate();
+			pst.close();
 
-            if (result != 1) {
-                con.rollback();
-                throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.INSERT,
-                        "Insert anormal (insert de moins ou plus d'une ligne)", null, result);
-            }
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.INSERT,
+						"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
+			}
 
-            query = "SELECT seq_id_compte.CURRVAL from DUAL";
+			query = "SELECT seq_id_compte.CURRVAL from DUAL";
 
-            System.err.println(query);
-            PreparedStatement pst2 = con.prepareStatement(query);
+			System.err.println(query);
+			PreparedStatement pst2 = con.prepareStatement(query);
 
-            ResultSet rs = pst2.executeQuery();
-            rs.next();
-            int numCliBase = rs.getInt(1);
+			ResultSet rs = pst2.executeQuery();
+			rs.next();
+			int numCliBase = rs.getInt(1);
 
-            con.commit();
-            rs.close();
-            pst2.close();
+			con.commit();
+			rs.close();
+			pst2.close();
 
-            compte.idNumCli = numCliBase;
+			compte.idNumCli = numCliBase;
 
-        } catch (SQLException e) {
-            throw new DataAccessException(Table.CompteCourant, Order.INSERT, "Erreur accès", e);
-        }
-    }
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.INSERT, "Erreur accès", e);
+		}
+	}
 	public void supprimerCompteCourant(CompteCourant compte)
-            throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 
-        try {
-            Connection con = LogToDatabase.getConnexion();
+		try {
+			Connection con = LogToDatabase.getConnexion();
 
-            String query = "DELETE FROM COMPTECOURANT WHERE idNumCompte = " + "?";
+			String query = "UPDATE COMPTECOURANT SET solde = 0, estCloture = 'O'  WHERE idNumCompte = " + "?";
 
-            PreparedStatement pst = con.prepareStatement(query);
+			PreparedStatement pst = con.prepareStatement(query);
 
-            pst.setInt(1, compte.idNumCompte);
+			pst.setInt(1, compte.idNumCompte);
 
-            System.err.println(query);
+			System.err.println(query);
 
-            int result = pst.executeUpdate();
-            pst.close();
+			int result = pst.executeUpdate();
+			pst.close();
 
-            if (result != 1) {
-                con.rollback();
-                throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.DELETE,
-                        "Suppression anormal", null, result);
-            }
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.DELETE,
+						"Suppression anormal", null, result);
+			}
 
-          //  query = "SELECT seq_id_compte.CURRVAL from DUAL";
+			//  query = "SELECT seq_id_compte.CURRVAL from DUAL";
 
-          //  System.err.println(query);
-          //  PreparedStatement pst2 = con.prepareStatement(query);
+			//  System.err.println(query);
+			//  PreparedStatement pst2 = con.prepareStatement(query);
 
-          //  ResultSet rs = pst2.executeQuery();
-           // rs.next();
-           // int numCliBase = rs.getInt(1);
+			//  ResultSet rs = pst2.executeQuery();
+			// rs.next();
+			// int numCliBase = rs.getInt(1);
 
-            con.commit();
-           // rs.close();
-            //pst2.close();
+			con.commit();
+			// rs.close();
+			//pst2.close();
 
-            //compte.idNumCli = numCliBase;
+			//compte.idNumCli = numCliBase;
 
-        } catch (SQLException e) {
-            throw new DataAccessException(Table.CompteCourant, Order.DELETE, "Erreur accès", e);
-        }
-    }
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.CompteCourant, Order.DELETE, "Erreur accès", e);
+		}
+	}
 }
 

@@ -83,58 +83,58 @@ public class ComptesManagement {
 		om.doOperationsManagementDialog();
 	}
 
-	
+
 	/**
 	 * Creer un compte
 	 * @return Le compte crée
 	 */
 	public CompteCourant creerCompte() {
 		CompteCourant compte;
-        CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
+		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dbs);
 
-        compte = cep.doCompteEditorDialog(this.clientDesComptes, null, EditionMode.CREATION);
+		compte = cep.doCompteEditorDialog(this.clientDesComptes, null, EditionMode.CREATION);
 
-        AccessCompteCourant ac = new AccessCompteCourant();
+		AccessCompteCourant ac = new AccessCompteCourant();
 
-        if (compte != null) {
-            try {
+		if (compte != null) {
+			try {
 
-            System.out.println(compte.toString());
-            ac.insertCompteCourant(compte);
-
-
-
-
-            //ArrayList<CompteCourant> Comptes;
+				System.out.println(compte.toString());
+				ac.insertCompteCourant(compte);
 
 
 
-                // Temporaire jusqu'à implémentation
-                //compte = null;
-                //AlertUtilities.showAlert(this.primaryStage, "En cours de développement", "Non implémenté",
-                        //"Enregistrement réel en BDD du compe non effectué\nEn cours de développement", AlertType.ERROR);
 
-                // TODO : enregistrement du nouveau compte en BDD (la BDD donne de nouvel id
-                // dans "compte")
-
-                // if JAMAIS vrai
-                // existe pour compiler les catchs dessous
+				//ArrayList<CompteCourant> Comptes;
 
 
-                if (Math.random() < -1) {
-                    throw new ApplicationException(Table.CompteCourant, Order.INSERT, "todo : test exceptions", null);
-                }
-            } catch (DatabaseConnexionException e) {
-                ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
-                ed.doExceptionDialog();
-                this.primaryStage.close();
-            } catch (ApplicationException ae) {
-                ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
-                ed.doExceptionDialog();
-            }
-        }
-        return compte;
-    }
+
+				// Temporaire jusqu'à implémentation
+				//compte = null;
+				//AlertUtilities.showAlert(this.primaryStage, "En cours de développement", "Non implémenté",
+				//"Enregistrement réel en BDD du compe non effectué\nEn cours de développement", AlertType.ERROR);
+
+				// TODO : enregistrement du nouveau compte en BDD (la BDD donne de nouvel id
+				// dans "compte")
+
+				// if JAMAIS vrai
+				// existe pour compiler les catchs dessous
+
+
+				if (Math.random() < -1) {
+					throw new ApplicationException(Table.CompteCourant, Order.INSERT, "todo : test exceptions", null);
+				}
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+			}
+		}
+		return compte;
+	}
 
 	/**
 	 * Affiche les comptes courant d'un client
@@ -158,30 +158,29 @@ public class ComptesManagement {
 		}
 		return listeCpt;
 	}
-	
+
 	/**
 	 * Supprime un compte
 	 */
 	public void supprimerCompte(CompteCourant compte) {
-        AccessCompteCourant ac = new AccessCompteCourant();
+		AccessCompteCourant ac = new AccessCompteCourant();
+		if (compte != null) {
+			try {
 
-        if (compte != null) {
-            try {
+				System.out.println(compte.toString());
+				ac.supprimerCompteCourant(compte);
 
-            System.out.println(compte.toString());
-            ac.supprimerCompteCourant(compte);
-
-                if (Math.random() < -1) {
-                    throw new ApplicationException(Table.CompteCourant, Order.DELETE, "todo : test exceptions", null);
-                }
-            } catch (DatabaseConnexionException e) {
-                ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
-                ed.doExceptionDialog();
-                this.primaryStage.close();
-            } catch (ApplicationException ae) {
-                ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
-                ed.doExceptionDialog();
-            }
-        }
-    }
+				if (Math.random() < -1) {
+					throw new ApplicationException(Table.CompteCourant, Order.DELETE, "todo : test exceptions", null);
+				}
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+			}
+		}
+	}
 }

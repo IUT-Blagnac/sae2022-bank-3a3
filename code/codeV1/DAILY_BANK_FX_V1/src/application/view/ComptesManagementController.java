@@ -118,14 +118,13 @@ public class ComptesManagementController implements Initializable {
 			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
 			Alert dialog = new Alert(AlertType.CONFIRMATION);
 			dialog.setTitle("Confirmation");
-			dialog.setContentText("Voulez-vous vraiment supprimer le compte ?");
-			dialog.setHeaderText("Supprimer le compte ?");
+			dialog.setContentText("Voulez-vous vraiment cloturer le compte ?");
+			dialog.setHeaderText("Cloturer le compte ?");
 			dialog.initOwner(this.primaryStage);
 			Optional<ButtonType> reponse = dialog.showAndWait();
 			if (reponse.get() == ButtonType.OK) {
-				System.out.println("ok");
 				this.cm.supprimerCompte(cpt);
-				this.olCompteCourant.remove(selectedIndice);
+				loadList();
 			}
 		}
 	}
@@ -136,6 +135,7 @@ public class ComptesManagementController implements Initializable {
 		compte = this.cm.creerCompte();
 		if (compte != null) {
 			this.olCompteCourant.add(compte);
+			loadList();
 		}
 	}
 
@@ -152,11 +152,18 @@ public class ComptesManagementController implements Initializable {
 		// Non implémenté => désactivé
 		this.btnModifierCompte.setDisable(true);
 		this.btnSupprCompte.setDisable(true);
-
+		CompteCourant compte;
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
-			this.btnVoirOpes.setDisable(false);
-			this.btnSupprCompte.setDisable(false);
+			compte = this.olCompteCourant.get(selectedIndice);
+			if(compte.estCloture.equals("O")) {
+				this.btnVoirOpes.setDisable(true);
+				this.btnSupprCompte.setDisable(true);
+			}
+			else {
+				this.btnVoirOpes.setDisable(false);
+				this.btnSupprCompte.setDisable(false);
+			}
 		} else {
 			this.btnVoirOpes.setDisable(true);
 			this.btnSupprCompte.setDisable(true);
