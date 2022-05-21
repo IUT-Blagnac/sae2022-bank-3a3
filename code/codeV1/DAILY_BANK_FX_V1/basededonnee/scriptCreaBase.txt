@@ -8,11 +8,13 @@
 -----------------------------------------------------------
 -----------------------------------------------------------
 
+
 -------------------------------
 ------ CREATION DES TABLES ----
 -------------------------------
 
 SET echo ON;
+
 
 DROP TABLE PrelevementAutomatique;
 DROP TABLE AssuranceEmprunt;
@@ -108,7 +110,6 @@ COMMIT;
 -----------------------------------
 ------ REMPLISSAGE DES TABLES -----
 -----------------------------------
-
 DELETE FROM Operation;
 DELETE FROM TypeOperation;
 DELETE FROM CompteCourant;
@@ -132,7 +133,7 @@ CREATE SEQUENCE seq_id_employe
 -- On insère les 3 chefs d'agence précédentes
 INSERT INTO Employe VALUES (seq_id_employe.NEXTVAL,'Tuffery','Michel','chefAgence','Tuff','Lejeune', 1);
 INSERT INTO Employe VALUES (seq_id_employe.NEXTVAL,'Crampes','Jean-Bernard','chefAgence','JBC','Basse', 2);
-INSERT INTO Employe VALUES (seq_id_employe.NEXTVAL,'Lepoisson','Benoit','chefAgence','LEP','Belote', 3);
+INSERT INTO Employe VALUES (seq_id_employe.NEXTVAL,'Inglebert','Jean-Michel','chefAgence','JMI','Belote', 3);
 
 -- on met à jour la clé étrangère, dans AgenceBancaire, qui pointe vers l'employé Chef d'agence
 UPDATE AgenceBancaire
@@ -247,35 +248,9 @@ INSERT INTO CompteCourant VALUES (seq_id_compte.NEXTVAL, 0,     1200, 10); -- cl
 INSERT INTO Operation (idOperation, montant, dateValeur, idNumCompte, idTypeOp)
 	VALUES (seq_id_operation.NEXTVAL, 1200, sysdate +2, seq_id_compte.CURRVAL, 'Dépôt Espèces');
 	
-
----------  UC CLOTURER COMPTE ---------------------
-
-ALTER TABLE CompteCourant
-ADD (estCloture CHAR(1));
-	 
-ALTER TABLE CompteCourant
-ADD CONSTRAINT ck_CpteCour_estCloture CHECK (estCloture IN ('O', 'N'));
-
--- on considère que tous les comptes sont "ouverts"
-UPDATE CompteCourant
-SET estCloture = 'N'; 
-
--- on clôture le compte du client 4 (Ventura car on a dit que ce client est inactif)
-UPDATE CompteCourant
-SET estCloture = 'O'
-WHERE idNumCli = 4; 
-
--- on affiche les comptes avec leur client et l'état du client (actif/inactif)
-SELECT C.idNumCli, C.nom, C.prenom, C.estInactif, C.idAg, CC.idNumCompte, CC.solde, CC.debitAutorise, CC.estCloture 
-FROM CompteCourant CC, Client C
-WHERE CC.idNumCli = C.idNumCli
-ORDER BY C.nom ;
-
-
-
 	
 ---------------------------------------------------
---------- UC DEBITER ------------------------------	
+--------- PROCEDURES STOCKEES ---------------------	
 ---------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE Debiter	(
@@ -327,8 +302,6 @@ BEGIN
 	
 END;
 /
-
--- TEST Debiter
 
 -- ACCEPT pIdNumCompte PROMPT 'Entrer le numero du compte courant à débiter : ';
 -- ACCEPT pMontantDebit PROMPT 'Entrer le montant à débiter : ';
@@ -397,8 +370,33 @@ SELECT * FROM CompteCourant ORDER BY idNumCompte;
 COMMIT;
 
 
+---------------------------------------------------
+---------  CLOTURER COMPTE ------------------------
+---------------------------------------------------
+ALTER TABLE CompteCourant
+ADD (estCloture CHAR(1));
+	 
+ALTER TABLE CompteCourant
+ADD CONSTRAINT ck_CpteCour_estCloture CHECK (estCloture IN ('O', 'N'));
+
+-- on considère que tous les comptes sont "ouverts"
+UPDATE CompteCourant
+SET estCloture = 'N'; 
+
+-- on clôture le compte du client 4 (Ventura car on a dit que ce client est inactif)
+UPDATE CompteCourant
+SET estCloture = 'O'
+WHERE idNumCli = 4; 
+
+-- on affiche les comptes avec leur client et l'état du client (actif/inactif)
+SELECT C.idNumCli, C.nom, C.prenom, C.estInactif, C.idAg, CC.idNumCompte, CC.solde, CC.debitAutorise, CC.estCloture 
+FROM CompteCourant CC, Client C
+WHERE CC.idNumCli = C.idNumCli
+ORDER BY C.nom ;
+
+
 ----------------------------------------------------
------------- UC CREDITER/DEBITER -------------------
+------------ CREDITER/DEBITER ----------------------
 ----------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE CreerOperation(
@@ -475,7 +473,7 @@ SELECT * FROM CompteCourant WHERE idNumCompte = 1;
 
 
 ----------------------------------------------------
------------- UC CREER COMPTE -----------------------
+------------ CREER COMPTE --------------------------
 ----------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE CreerCompte(
@@ -492,8 +490,8 @@ BEGIN
 		retour := -1;
 	ELSE
 		-- On considere que vDebitAutorisé est passé en paramètre avec son signe - . Ex: -850
-		INSERT INTO CompteCourant (idNumCompte, debitAutorise, solde, idNumcli, 'N') 
-		VALUES (seq_id_compte.NEXTVAL, vDebitAutorise, vMontantInitial, vIdNumCli);  
+		INSERT INTO CompteCourant (idNumCompte, debitAutorise, solde, idNumcli, estCloture) 
+		VALUES (seq_id_compte.NEXTVAL, vDebitAutorise, vMontantInitial, vIdNumCli, 'N');  
 		
 		-- on insere l'operation de versement initial
 		-- pour simplifier on considere que le type de cette opération est toujours un 'Dépôt Espèces'
@@ -508,6 +506,7 @@ END;
 /
 
 -- TEST CreerCompte
+
 
 SELECT * FROM CompteCourant WHERE idNumCli = 2 ; -- on regarde les comptes existants du client 2 Belmondo
 
@@ -529,8 +528,9 @@ PRINT ret;
 SELECT * FROM CompteCourant WHERE idNumCli = 2 ;
 
 
+
 -----------------------------------------------------------
--------------- UC Effectuer Virement ----------------------
+-------------- PROCEDURE VIRER ----------------------------
 -----------------------------------------------------------
 
 -- Le montant saisi à virer sera donné en valeur absolue (ex : 100€) et
@@ -560,8 +560,6 @@ BEGIN
 	
 END;
 /
-
--- TEST Virer
 
 -- Pour tester, on va faire un virement "qui bloque" entre les 2 comptes de Gabin
 SELECT * FROM CompteCourant WHERE idNumCli = 1; 
@@ -596,163 +594,17 @@ ORDER BY idNumCompte, idOperation ;
 COMMIT;
 
 
--------------------------------------------------------------------------------
------------- UC CRUD PRELEVEMENT AUTOMATIQUES   -------------------------------
--------------------------------------------------------------------------------
+-------------------------------------------------------
+----------- GERER EMPRUNTS ET ASSURANCES --------------
+-------------------------------------------------------
 
--- On crée une séquence afin de générer la clé primaire des prelevements automatiques
-DROP SEQUENCE seq_id_prelevAuto;
-CREATE SEQUENCE seq_id_prelevAuto
-  MINVALUE 1  MAXVALUE 99999999 
-  START WITH 1 INCREMENT BY 1;
-  
-DROP TABLE PrelevementAutomatique;
- 
-CREATE TABLE PrelevementAutomatique(
-	idPrelev NUMBER(8), 
-	montant DECIMAL(8,2),
-	dateRecurrente NUMBER(2), -- ex: 5 pour prelev à executer chaque 5 mois
-	beneficiaire VARCHAR(50), -- le bénéficiaire du prélèvement auto, ex: EDF
-	idNumCompte NUMBER(5),
-	CONSTRAINT pk_PrelevAuto PRIMARY KEY (idPrelev),
-	CONSTRAINT fk_PrelevAuto_CompteCourant
-		FOREIGN KEY (idNumCompte) REFERENCES CompteCourant(idNumCompte),
-	CONSTRAINT nn_PrelevAuto_CpteCourant CHECK (idNumCompte IS NOT NULL)
-);
-
--- TEST PrelevementAutomatique
-
-INSERT INTO PrelevementAutomatique VALUES (seq_id_prelevAuto.NEXTVAL, 120, 5, 'EDF', 1);
-INSERT INTO PrelevementAutomatique VALUES (seq_id_prelevAuto.NEXTVAL, 55,  3, 'Free Telecom', 1);
-
-SELECT * FROM PrelevementAutomatique;
-COMMIT;
-
-
------------------------------------------------------------
-------- UC DEBIT EXCEPTIONNEL   ---------------------------
------------------------------------------------------------
-CREATE OR REPLACE f DebiterExceptionnel(
-	vidNumCompte CompteCourant.idNumCompte%TYPE,
-	vMontantOp Operation.montant%TYPE,
-	vTypeOp TypeOperation.idTypeOp%TYPE,
-	retour OUT NUMBER
-	)
-IS
--- On ne teste pas les exceptions ici, on suppose que cela est fait au niveau JAVA :
--- (cela peut être changé mais il faut être capable d'intercepter et traiter les exceptions
--- SQL depuis JDBC...
--- Contraintes à verifier :
---			   le compte n'est pas clôturé 
-
-	vSolde CompteCourant.solde%TYPE;
-	vNouveauSolde CompteCourant.solde%TYPE;
-	
-BEGIN
-	-- on n'insère pas la dateOp car elle est définie dans la table pour prendre
-	-- la valeur du jour par défaut
-	-- on insere la date du jour (sysdate) + 2 jours pour la date de valeur de l'operation
-    
-	-- La différence avec la proc. stockee Debiter est qu'on insere le vMontantOp sans changer son signe
-	-- Cela suppose que le code Java qui appelle cette procédure passe le montant déjà signé (-23 pour un débit par exemple)
-	-- ex: -300   := 150    - 450
-
-	SELECT solde into vSolde FROM CompteCourant WHERE idNumCompte = vidNumCompte;
-	vNouveauSolde := vSolde + vMontantOp;
-	
-	INSERT INTO Operation (idOperation, montant, dateValeur, idNumCompte, idTypeOp)
-	VALUES (seq_id_operation.NEXTVAL, vMontantOp, sysdate +2, vidNumCompte, vTypeOp);
-
-	-- on met à jour le solde du compte correspondant à l'opération
-	UPDATE CompteCourant
-	SET solde = vNouveauSolde
-	WHERE idNumCompte = vidNumCompte;
-	
-	COMMIT;
-	retour := 0;
-END;
-/
-
--- TEST DebiterExceptionnel
-
--- on regarde le compte 1 de Gabi avant d'appeler la procedure CreerOperation
-SELECT * FROM Operation WHERE idNumCompte = 1;
-SELECT * FROM CompteCourant WHERE idNumCompte = 1;
-
-
-VARIABLE ret NUMBER;
-EXECUTE DebiterExceptionnel(1, TO_NUMBER('-200'), 'Paiement Carte Bleue', :ret);
-PRINT ret;
-
--- On vérifie les écritures après l'appel de la procedure...
-SELECT * FROM Operation WHERE idNumCompte = 1;
-SELECT * FROM CompteCourant WHERE idNumCompte = 1;
-
-
------------------------------------------------------------
-------- UC EXECUTER PRELEVEMENTS AUTOMATIQUES -------------
------------------------------------------------------------
-
--- Pour tester la procedure, il faut mettre le numero du jour (ici 22) comme valeur du 3ème parametre
--- Ainsi la procedure détecte qu'il y a 3 prelev. auto prévues pour le jour d'aujourd'hui et les execute
-
--- A cette étape le compte 1 a un solde de -47.72€ et un debitAutorisé de -200€
--- donc les 2 prochains prelevements doivent "passer" (nouveau solde : -47.72 -100 -50 = -197.72€ soit >= -200€ de debitAutorise)
--- MAIS le 3ème prelevement prévu (Véolia) va etre bloqué par la procedure Debiter et on obtiendra donc un message d'erreur dans la variable retour
-
-INSERT INTO PrelevementAutomatique VALUES (seq_id_prelevAuto.NEXTVAL, 100, 22, 'GDF', 1);
-INSERT INTO PrelevementAutomatique VALUES (seq_id_prelevAuto.NEXTVAL, 50,  22, 'Orange', 1);
-INSERT INTO PrelevementAutomatique VALUES (seq_id_prelevAuto.NEXTVAL, 212, 22, 'Véolia', 1);
-
-SET SERVEROUTPUT ON;
-
-CREATE OR REPLACE PROCEDURE ExecuterPrelevAuto (retour OUT VARCHAR)
-IS
-	-- on récupere tous les Prelevements Automatiques qui doivent être excéutés aujourd'hui (ex : 22 du mois)
-	CURSOR c1 IS SELECT * FROM PrelevementAutomatique WHERE dateRecurrente = TO_CHAR(SYSDATE, 'DD');
-	testDebit NUMBER := 0;
-	
-BEGIN
-	FOR C1_ligne IN C1 LOOP
-	    Debiter(C1_ligne.idNumCompte, C1_ligne.montant, 'Prélèvement automatique', testDebit);
-		IF testDebit = -1 THEN	
-			retour := retour || 'Problème sur le debit du prelev auto num '|| C1_ligne.idPrelev || ' du montant ' || C1_Ligne.montant 
-							  || ' sur le compte '|| C1_Ligne.idNumCompte ||'    -    ';
-		ELSE 					  
-			DBMS_OUTPUT.PUT_LINE('Execution du prelev auto num '|| C1_ligne.idPrelev || ' du montant ' || C1_Ligne.montant 
-							  || ' sur le compte '|| C1_Ligne.idNumCompte);
-		END IF;
-	END LOOP;
-END;
-/
-
--- TEST ExecuterPrelevAuto
-
-VARIABLE ret varchar2(1000);
-EXECUTE ExecuterPrelevAuto(:ret);
-PRINT ret;
-
-SELECT * FROM Operation WHERE TO_CHAR(dateOp, 'DD/MM/YY') = TO_CHAR(SYSDATE, 'DD/MM/YY') and IDTYPEOP = 'Prélèvement automatique';
-SELECT * FROM CompteCourant WHERE idNumCompte = 1;
-
-COMMIT;
-
-
---------------------------------------------------------------------------------
------------ UC SIMULER EMPRUNTS ------------------------------------------------
------------ UC SIMULER ASSURANCES EMPRUNT --------------------------------------
---------------------------------------------------------------------------------
-
-
-DROP TABLE AssuranceEmprunt;
-DROP TABLE Emprunt;
 
 CREATE TABLE Emprunt(
 	idEmprunt NUMBER(5),
 	tauxEmp DECIMAL(4,2), -- ex: 12,25%
 	capitalEmp NUMBER(8), -- 250 000 €
 	dureeEmp NUMBER(3), -- en mois
-	dateDebEmp DATE, -- ex: 01/08/2020
+	dateDebEmp DATE, -- ex: 01/08/2019
 	idNumCli NUMBER(5),
 	CONSTRAINT pk_Emprunt PRIMARY KEY (idEmprunt),
 	CONSTRAINT fk_Emprunt_Client
@@ -781,18 +633,90 @@ CREATE SEQUENCE seq_id_assurance
   MINVALUE 1  MAXVALUE 999999999999  
   START WITH 1 INCREMENT BY 1;
 
-INSERT INTO Emprunt VALUES (seq_id_emprunt.NEXTVAL, 4.5, 250000, 240, '01/09/2020', 2); -- emprunt de Belmondo
-INSERT INTO Emprunt VALUES (seq_id_emprunt.NEXTVAL, 2.2, 50000, 48, '01/06/2020', 9); -- emprunt de Depardieu
+INSERT INTO Emprunt VALUES (seq_id_emprunt.NEXTVAL, 4.5, 250000, 240, '01/09/2019', 2); -- emprunt de Belmondo
+INSERT INTO Emprunt VALUES (seq_id_emprunt.NEXTVAL, 2.2, 50000, 48, '01/06/2019', 9); -- emprunt de Depardieu
 INSERT INTO AssuranceEmprunt VALUES (1, 0.85, 100, seq_id_emprunt.CURRVAL); -- assurance pour emprunt 1 de Belmondo
 	
 SELECT * FROM Emprunt E, AssuranceEmprunt AE
 WHERE E.idEmprunt = AE.idEmprunt(+);
 
-commit;
 
---------- FIN ------------------------------------------------------
+-------------------------------------------------------------------
+------------------ GERER PRELEVEMENT AUTOMATIQUES -----------------
+-------------------------------------------------------------------
 
+-- On crée une séquence afin de générer la clé primaire des prelevements automatiques
+DROP SEQUENCE seq_id_prelevAuto;
+CREATE SEQUENCE seq_id_prelevAuto
+  MINVALUE 1  MAXVALUE 99999999 
+  START WITH 1 INCREMENT BY 1;
+  
 
+ 
+CREATE TABLE PrelevementAutomatique(
+	idPrelev NUMBER(8), 
+	montant DECIMAL(8,2),
+	dateRecurrente NUMBER(2), -- ex: 5 pour prelev à executer chaque 5 mois
+	beneficiaire VARCHAR(50), -- le bénéficiaire du prélèvement auto, ex: EDF
+	idNumCompte NUMBER(5),
+	CONSTRAINT pk_PrelevAuto PRIMARY KEY (idPrelev),
+	CONSTRAINT fk_PrelevAuto_CompteCourant
+		FOREIGN KEY (idNumCompte) REFERENCES CompteCourant(idNumCompte),
+	CONSTRAINT nn_PrelevAuto_CpteCourant CHECK (idNumCompte IS NOT NULL)
+);
+
+INSERT INTO PrelevementAutomatique VALUES (seq_id_prelevAuto.NEXTVAL, 120, 5, 'EDF', 1);
+INSERT INTO PrelevementAutomatique VALUES (seq_id_prelevAuto.NEXTVAL, 55,  3, 'Free Telecom', 1);
+
+SELECT * FROM PrelevementAutomatique;
+COMMIT;
 	
 	
+
+	
+-----------------------------------------------------------
+------- EXECUTER PRELEVEMENTS AUTOMATIQUES ----------------
+-----------------------------------------------------------
+
+-- Pour tester la procedure, il faut mettre le numero du jour (ici 23) comme valeur du 3ème parametre
+-- Ainsi la procedure détecte qu'il y a 3 prelev. auto prévues pour le jour d'aujourd'hui et les execute
+
+-- A cette étape le compte 1 a un solde de -47.72€ et un debitAutorisé de -200€
+-- donc les 2 prochains prelevements doivent "passer" (nouveau solde : -47.72 -100 -50 = -197.72€ soit >= -200€ de debitAutorise)
+-- MAIS le 3ème prelevement prévu (Véolia) va etre bloqué par la procedure Debiter et on obtiendra donc un message d'erreur dans la variable retour
+
+INSERT INTO PrelevementAutomatique VALUES (seq_id_prelevAuto.NEXTVAL, 100, 23, 'GDF', 1);
+INSERT INTO PrelevementAutomatique VALUES (seq_id_prelevAuto.NEXTVAL, 50,  23, 'Orange', 1);
+INSERT INTO PrelevementAutomatique VALUES (seq_id_prelevAuto.NEXTVAL, 212, 23, 'Véolia', 1);
+
+SET SERVEROUTPUT ON;
+
+CREATE OR REPLACE PROCEDURE ExecuterPrelevAuto (retour OUT VARCHAR)
+IS
+	-- on récupere tous les Prelevements Automatiques qui doivent être excéutés aujourd'hui (ex : 6 du moi)
+	CURSOR c1 IS SELECT * FROM PrelevementAutomatique WHERE dateRecurrente = TO_CHAR(SYSDATE, 'DD');
+	testDebit NUMBER := 0;
+	
+BEGIN
+	FOR C1_ligne IN C1 LOOP
+	    Debiter(C1_ligne.idNumCompte, C1_ligne.montant, 'Prélèvement automatique', testDebit);
+		IF testDebit = -1 THEN	
+			retour := retour || 'Problème sur le debit du prelev auto num '|| C1_ligne.idPrelev || ' du montant ' || C1_Ligne.montant 
+							  || ' sur le compte '|| C1_Ligne.idNumCompte ||'    -    ';
+		ELSE 					  
+			DBMS_OUTPUT.PUT_LINE('Execution du prelev auto num '|| C1_ligne.idPrelev || ' du montant ' || C1_Ligne.montant 
+							  || ' sur le compte '|| C1_Ligne.idNumCompte);
+		END IF;
+	END LOOP;
+END;
+/
+
+VARIABLE ret varchar2(1000);
+EXECUTE ExecuterPrelevAuto(:ret);
+PRINT ret;
+
+SELECT * FROM Operation WHERE TO_CHAR(dateOp, 'DD/MM/YY') = TO_CHAR(SYSDATE, 'DD/MM/YY') and IDTYPEOP = 'Prélèvement automatique';
+SELECT * FROM CompteCourant WHERE idNumCompte = 1;
+
+COMMIT;
 
