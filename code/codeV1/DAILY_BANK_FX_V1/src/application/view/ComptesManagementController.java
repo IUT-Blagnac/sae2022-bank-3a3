@@ -2,6 +2,7 @@ package application.view;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
@@ -10,10 +11,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
@@ -109,6 +113,21 @@ public class ComptesManagementController implements Initializable {
 
 	@FXML
 	private void doSupprimerCompte() {
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
+			Alert dialog = new Alert(AlertType.CONFIRMATION);
+			dialog.setTitle("Confirmation");
+			dialog.setContentText("Voulez-vous vraiment supprimer le compte ?");
+			dialog.setHeaderText("Supprimer le compte ?");
+			dialog.initOwner(this.primaryStage);
+			Optional<ButtonType> reponse = dialog.showAndWait();
+			if (reponse.get() == ButtonType.OK) {
+				System.out.println("ok");
+				this.cm.supprimerCompte(cpt);
+				this.olCompteCourant.remove(selectedIndice);
+			}
+		}
 	}
 
 	@FXML
@@ -137,8 +156,10 @@ public class ComptesManagementController implements Initializable {
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			this.btnVoirOpes.setDisable(false);
+			this.btnSupprCompte.setDisable(false);
 		} else {
 			this.btnVoirOpes.setDisable(true);
+			this.btnSupprCompte.setDisable(true);
 		}
 	}
 }

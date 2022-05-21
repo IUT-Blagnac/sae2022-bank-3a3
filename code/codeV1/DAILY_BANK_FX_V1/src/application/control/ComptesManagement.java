@@ -158,4 +158,30 @@ public class ComptesManagement {
 		}
 		return listeCpt;
 	}
+	
+	/**
+	 * Supprime un compte
+	 */
+	public void supprimerCompte(CompteCourant compte) {
+        AccessCompteCourant ac = new AccessCompteCourant();
+
+        if (compte != null) {
+            try {
+
+            System.out.println(compte.toString());
+            ac.supprimerCompteCourant(compte);
+
+                if (Math.random() < -1) {
+                    throw new ApplicationException(Table.CompteCourant, Order.DELETE, "todo : test exceptions", null);
+                }
+            } catch (DatabaseConnexionException e) {
+                ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+                ed.doExceptionDialog();
+                this.primaryStage.close();
+            } catch (ApplicationException ae) {
+                ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+                ed.doExceptionDialog();
+            }
+        }
+    }
 }
