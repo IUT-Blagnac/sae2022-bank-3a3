@@ -32,7 +32,7 @@ ZOULI-BARRERE Karim
 |         | Doc. Util. V1 |         |         
 |         | Doc. Tec. V1 |                |     
 |         | Code V1     |                     | 
-|         | Recette V1 |                      | 
+|         | Recette V1 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Cahier_de_recette_V1_nouvelle_version.pdf                      | 
 |         | Gantt V3 à jour   |                      | 
 |         | `jar` projet |    | 
 | 05/06   | Gantt V3 à Jour  |    |  
