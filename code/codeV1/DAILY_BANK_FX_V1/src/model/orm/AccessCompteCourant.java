@@ -226,27 +226,14 @@ public class AccessCompteCourant {
 
 			if (result != 1) {
 				con.rollback();
-				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.DELETE,
+				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.UPDATE,
 						"Suppression anormal", null, result);
 			}
 
-			//  query = "SELECT seq_id_compte.CURRVAL from DUAL";
-
-			//  System.err.println(query);
-			//  PreparedStatement pst2 = con.prepareStatement(query);
-
-			//  ResultSet rs = pst2.executeQuery();
-			// rs.next();
-			// int numCliBase = rs.getInt(1);
-
 			con.commit();
-			// rs.close();
-			//pst2.close();
-
-			//compte.idNumCli = numCliBase;
 
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.CompteCourant, Order.DELETE, "Erreur accès", e);
+			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
 }

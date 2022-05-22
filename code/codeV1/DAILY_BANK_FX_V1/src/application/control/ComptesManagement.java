@@ -171,7 +171,7 @@ public class ComptesManagement {
 				ac.supprimerCompteCourant(compte);
 
 				if (Math.random() < -1) {
-					throw new ApplicationException(Table.CompteCourant, Order.DELETE, "todo : test exceptions", null);
+					throw new ApplicationException(Table.CompteCourant, Order.UPDATE, "todo : test exceptions", null);
 				}
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
