@@ -2,21 +2,27 @@ package application.view;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
 import application.control.ClientsManagement;
+import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
+import model.data.CompteCourant;
 
 public class ClientsManagementController implements Initializable {
 
@@ -155,6 +161,21 @@ public class ClientsManagementController implements Initializable {
 
 	@FXML
 	private void doDesactiverClient() {
+		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			Client client = this.olc.get(selectedIndice);
+			Alert dialog = new Alert(AlertType.CONFIRMATION);
+			dialog.setTitle("Confirmation");
+			dialog.setContentText("Voulez-vous vraiment rendre inactif ce client ?");
+			dialog.setHeaderText("Rendre inactif ?");
+			dialog.initOwner(this.primaryStage);
+			Optional<ButtonType> reponse = dialog.showAndWait();
+			if (reponse.get() == ButtonType.OK) {
+				this.cm.rendreInactif(client);
+				client.estInactif = "O";
+				this.btnDesactClient.setDisable(true);
+			}
+		}
 	}
 
 	@FXML
@@ -171,6 +192,10 @@ public class ClientsManagementController implements Initializable {
 		this.btnDesactClient.setDisable(true);
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
+			Client client = this.olc.get(selectedIndice);
+			if(client.estInactif.equals("N") && ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
+				this.btnDesactClient.setDisable(false);
+			}
 			this.btnModifClient.setDisable(false);
 			this.btnComptesClient.setDisable(false);
 		} else {

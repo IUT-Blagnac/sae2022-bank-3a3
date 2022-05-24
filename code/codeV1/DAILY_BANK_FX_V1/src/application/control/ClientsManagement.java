@@ -14,8 +14,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.data.Client;
 import model.orm.AccessClient;
+import model.orm.AccessCompteCourant;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
+import model.orm.exception.Order;
+import model.orm.exception.Table;
 
 public class ClientsManagement {
 
@@ -88,6 +91,33 @@ public class ClientsManagement {
 		}
 		return result;
 	}
+	
+	/**
+	 * Rend inactif un client
+	 * @param c Le Client
+	 * @see Client
+	 */
+	public void rendreInactif(Client c) {
+		AccessClient ac = new AccessClient();
+		if (c != null) {
+			try {
+				System.out.println(c.estInactif);
+				ac.updateClient(c);
+
+				if (Math.random() < -1) {
+					throw new ApplicationException(Table.Client, Order.UPDATE, "todo : test exceptions", null);
+				}
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+			}
+		}
+	}
+		
 
 	/**
 	 * Créer un nouveau client
