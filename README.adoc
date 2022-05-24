@@ -28,12 +28,13 @@ ZOULI-BARRERE Karim
 |         | Doc User V1    |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Documentation_Utilisateur_V1.pdf  |
 |         | Recette V1  |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Cahier_de_recette_V1.pdf  | 
 |         | Suivi projet|   | 
-| 22/05   | Gantt V2  à jour    |       | 
-|         | Doc. Util. V1 |         |         
-|         | Doc. Tec. V1 |                |     
+| 22/05   | Gantt V1  à jour    |   Des tâches ont été réalisé https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/GANTTV1.pdf    | 
+|	  | Gantt V2  à jour    |  Aucune modification  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/GANTTV2.pdf   | 
+|         | Doc. Util. V1 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Documentation_Utilisateur_V1_nouvelle_version.pdf |         
+|         | Doc. Tec. V1 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Documentation_Technique_V1_NouvelleVersion.pdf               |     
 |         | Code V1     |                     | 
 |         | Recette V1 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Cahier_de_recette_V1_nouvelle_version.pdf                      | 
-|         | Gantt V3 à jour   |                      | 
+|         | Gantt V3 à jour   |  Aucune modification https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V3/GANTTV3.pdf  | 
 |         | `jar` projet |    | 
 | 05/06   | Gantt V3 à Jour  |    |  
 |         | Doc. Util. V2 |         |           
