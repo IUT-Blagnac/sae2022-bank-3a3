@@ -22,7 +22,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
-import model.data.CompteCourant;
 
 public class ClientsManagementController implements Initializable {
 
@@ -174,6 +173,7 @@ public class ClientsManagementController implements Initializable {
 				this.cm.rendreInactif(client);
 				client.estInactif = "O";
 				this.btnDesactClient.setDisable(true);
+				this.btnComptesClient.setDisable(true);
 			}
 		}
 	}
@@ -193,11 +193,14 @@ public class ClientsManagementController implements Initializable {
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			Client client = this.olc.get(selectedIndice);
+			this.btnComptesClient.setDisable(false);
 			if(client.estInactif.equals("N") && ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
 				this.btnDesactClient.setDisable(false);
 			}
+			else if(client.estInactif.equals("O")) {
+				this.btnComptesClient.setDisable(true);
+			} 
 			this.btnModifClient.setDisable(false);
-			this.btnComptesClient.setDisable(false);
 		} else {
 			this.btnModifClient.setDisable(true);
 			this.btnComptesClient.setDisable(true);
