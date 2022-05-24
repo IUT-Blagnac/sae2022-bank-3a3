@@ -28,7 +28,7 @@ ZOULI-BARRERE Karim
 |         | Doc User V1    |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Documentation_Utilisateur_V1.pdf  |
 |         | Recette V1  |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Cahier_de_recette_V1.pdf  | 
 |         | Suivi projet|   | 
-| 22/05   | Gantt V1  à jour    |       | 
+| 22/05   | Gantt V1  à jour    |   Des tâches ont été réalisé https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/GANTTV1.pdf    | 
 |	  | Gantt V2  à jour    |  Aucune modification  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/GANTTV2.pdf   | 
 |         | Doc. Util. V1 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Documentation_Utilisateur_V1_nouvelle_version.pdf |         
 |         | Doc. Tec. V1 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Documentation_Technique_V1_NouvelleVersion.pdf               |     
