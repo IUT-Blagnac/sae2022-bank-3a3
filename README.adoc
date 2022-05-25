@@ -35,7 +35,7 @@ ZOULI-BARRERE Karim
 |         | Code V1     | https://github.com/IUT-Blagnac/sae2022-bank-3a3/tree/main/code/codeV1/DAILY_BANK_FX_V1 | 
 |         | Recette V1 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Cahier_de_recette_V1_nouvelle_version.pdf | 
 |         | Gantt V3 à jour   | Aucune modification https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V3/GANTTV3.pdf | 
-|         | `jar` projet |    | 
+|         | `jar` projet | Nous avons codé : Clôturer un compte, créer un compte https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/code/jar/codeV1_2505.jar | 
 | 05/06   | Gantt V3 à Jour  |    |  
 |         | Doc. Util. V2 |         |           
 |         | Doc. Tec. V2 |    |     
