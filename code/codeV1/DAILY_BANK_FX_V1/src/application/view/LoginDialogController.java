@@ -70,7 +70,7 @@ public class LoginDialogController implements Initializable {
 	private void doOK() {
 		String login = this.txtLogin.getText().trim();
 		String password = new String(this.txtPassword.getText().trim());
-		if (login.length() == 0 || password.length() == 0) {
+		if (login.length() == 0 || password.length() <= 1) {
 			this.afficheErreur("Identifiants incorrects :");
 		} else {
 			Employe e;
