@@ -30,7 +30,7 @@ ZOULI-BARRERE Karim
 |         | Suivi projet|   | 
 | 22/05   | Gantt V1  à jour    | Des tâches ont été réalisées https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/GANTTV1.pdf | 
 |	  | Gantt V2  à jour    | Aucune modification  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/GANTTV2.pdf   | 
-|         | Doc. Util. V1 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Documentation_Utilisateur_V1_nouvelle_version.pdf |         
+|         | Doc. Util. V1 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Documentation_Utilisateur_V1_nouvelle_version.pdf |Attention le logo académie de toulouse n'a rien à faire dans vos docs !!   Pour chaque fontionnalité, faire des copies d'écran pour expliquer où cliquer et ce qu'on doit obtenir ! cf. Documentation donnée en exemple dans le cours.       
 |         | Doc. Tec. V1 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Documentation_Technique_V1_NouvelleVersion.pdf |     
 |         | Code V1     | https://github.com/IUT-Blagnac/sae2022-bank-3a3/tree/main/code/codeV1/DAILY_BANK_FX_V1 | 
 |         | Recette V1 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Cahier_de_recette_V1_nouvelle_version.pdf | 
