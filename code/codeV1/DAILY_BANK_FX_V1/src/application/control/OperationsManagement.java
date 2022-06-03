@@ -102,6 +102,37 @@ public class OperationsManagement {
 		}
 		return op;
 	}
+	
+	/** 
+	 * Retourne le credit enregistré
+	 * @return l'opération
+	 */
+	public Operation enregistrerCredit() {
+
+		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
+		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.CREDIT);
+		System.out.println("test1");
+		if (op != null) {
+			try {
+				System.out.println("test2");
+				AccessOperation ao = new AccessOperation();
+
+				ao.insertCredit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+				op = null;
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				op = null;
+			}
+		}
+		return op;
+	}
+	
 
 	/**
 	 * Retourne les paires de valeurs du compte courant et de ses opérations

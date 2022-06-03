@@ -90,7 +90,6 @@ public class OperationsManagementController implements Initializable {
 
 	@FXML
 	private void doDebit() {
-
 		Operation op = this.om.enregistrerDebit();
 		if (op != null) {
 			this.updateInfoCompteClient();
@@ -100,6 +99,15 @@ public class OperationsManagementController implements Initializable {
 
 	@FXML
 	private void doCredit() {
+		Operation op = this.om.enregistrerCredit();
+		System.out.println("enregistrer credit");
+		if (op != null) {
+			System.out.println("1");
+			this.updateInfoCompteClient();
+			System.out.println("2");
+			this.validateComponentState();
+			System.out.println("3");
+		}
 	}
 
 	@FXML
@@ -108,7 +116,7 @@ public class OperationsManagementController implements Initializable {
 
 	private void validateComponentState() {
 		// Non implémenté => désactivé
-		this.btnCredit.setDisable(true);
+		this.btnCredit.setDisable(false);
 		this.btnDebit.setDisable(false);
 	}
 
