@@ -2,7 +2,6 @@ package application.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 import application.DailyBankState;
 import application.control.ExceptionDialog;
@@ -19,7 +18,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import model.data.Client;
 import model.data.Employe;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.Order;

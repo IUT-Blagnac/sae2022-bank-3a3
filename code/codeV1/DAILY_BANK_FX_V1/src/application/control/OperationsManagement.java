@@ -28,6 +28,7 @@ public class OperationsManagement {
 	private OperationsManagementController omc;
 	private Client clientDuCompte;
 	private CompteCourant compteConcerne;
+	private ComptesManagement cm;
 
 	/**
 	 * Permet l'affichage de la fênetre de la gestion des opérations d'un compte d'un client
@@ -102,6 +103,38 @@ public class OperationsManagement {
 		}
 		return op;
 	}
+	
+	/**
+	 * Retourne le virement
+	 * @return l'opération
+	 */
+	public Operation[] enregistrerVirement() {
+		
+		this.cm = new ComptesManagement(this.primaryStage, this.dbs, this.clientDuCompte);
+		VirementEditorPane vep = new VirementEditorPane(primaryStage, cm, dbs, clientDuCompte, compteConcerne);
+		Operation[] op = vep.doVirementEditorDialog();
+		System.out.println(op[0]);
+		System.out.println(op[1]);
+		
+		if (op != null) {
+			try {
+				AccessOperation ao = new AccessOperation();
+				ao.insertDebit(op[0].idNumCompte, op[0].montant, op[0].idTypeOp);
+				ao.insertCredit(op[1].idNumCompte, op[1].montant, op[1].idTypeOp);
+
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+				op = null;
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				op = null;
+			}
+		}
+		return op;
+	}
 
 	/**
 	 * Retourne les paires de valeurs du compte courant et de ses opérations
@@ -131,7 +164,6 @@ public class OperationsManagement {
 			ed.doExceptionDialog();
 			listeOP = new ArrayList<>();
 		}
-		System.out.println(this.compteConcerne.solde);
 		return new PairsOfValue<>(this.compteConcerne, listeOP);
 	}
 }

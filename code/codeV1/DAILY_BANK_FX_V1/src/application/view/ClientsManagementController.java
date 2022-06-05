@@ -171,7 +171,6 @@ public class ClientsManagementController implements Initializable {
 			Optional<ButtonType> reponse = dialog.showAndWait();
 			if (reponse.get() == ButtonType.OK) {
 				this.cm.rendreInactif(client);
-				client.estInactif = "O";
 				this.btnDesactClient.setDisable(true);
 				this.btnComptesClient.setDisable(true);
 			}

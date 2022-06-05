@@ -97,7 +97,6 @@ public class ComptesManagement {
 		if (compte != null) {
 			try {
 
-				System.out.println(compte.toString());
 				ac.insertCompteCourant(compte);
 
 
@@ -165,7 +164,6 @@ public class ComptesManagement {
 		if (compte != null) {
 			try {
 
-				System.out.println(compte.toString());
 				ac.supprimerCompteCourant(compte);
 
 				if (Math.random() < -1) {

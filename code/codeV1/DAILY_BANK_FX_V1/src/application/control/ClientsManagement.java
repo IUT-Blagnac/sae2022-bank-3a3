@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import application.DailyBankApp;
 import application.DailyBankState;
+import application.tools.ConstantesIHM;
 import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.ClientsManagementController;
@@ -16,8 +17,6 @@ import model.data.Client;
 import model.orm.AccessClient;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
-import model.orm.exception.Order;
-import model.orm.exception.Table;
 
 public class ClientsManagement {
 
@@ -94,27 +93,27 @@ public class ClientsManagement {
 	/**
 	 * Rend inactif un client
 	 * @param c Le Client
+	 * @return 
 	 * @see Client
 	 */
-	public void rendreInactif(Client c) {
-		AccessClient ac = new AccessClient();
+	public Client rendreInactif(Client c) {
+		c.estInactif = ConstantesIHM.CLIENT_INACTIF;
 		if (c != null) {
 			try {
-				System.out.println(c.estInactif);
+				AccessClient ac = new AccessClient();
 				ac.updateClient(c);
-
-				if (Math.random() < -1) {
-					throw new ApplicationException(Table.Client, Order.UPDATE, "todo : test exceptions", null);
-				}
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
 				ed.doExceptionDialog();
+				c = null;
 				this.primaryStage.close();
 			} catch (ApplicationException ae) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
 				ed.doExceptionDialog();
+				c = null;
 			}
 		}
+		return c;
 	}
 		
 

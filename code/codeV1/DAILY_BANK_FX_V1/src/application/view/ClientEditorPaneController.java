@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 import application.DailyBankState;
-import application.control.ExceptionDialog;
 import application.tools.AlertUtilities;
 import application.tools.ConstantesIHM;
 import application.tools.EditionMode;
@@ -20,9 +19,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
-import model.orm.exception.ApplicationException;
-import model.orm.exception.Order;
-import model.orm.exception.Table;
 
 public class ClientEditorPaneController implements Initializable {
 
@@ -99,12 +95,7 @@ public class ClientEditorPaneController implements Initializable {
 		case SUPPRESSION:
 			// ce mode n'est pas utilisé pour les Clients :
 			// la suppression d'un client n'existe pas il faut que le chef d'agence
-			// bascule son état "Actif" à "Inactif"
-			ApplicationException ae = new ApplicationException(Table.NONE, Order.OTHER, "SUPPRESSION CLIENT NON PREVUE",
-					null);
-			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
-			ed.doExceptionDialog();
-
+			// bascule son état "Actif" à "Inactif"s
 			break;
 		}
 		// Paramétrages spécifiques pour les chefs d'agences

@@ -90,7 +90,6 @@ public class OperationsManagementController implements Initializable {
 
 	@FXML
 	private void doDebit() {
-
 		Operation op = this.om.enregistrerDebit();
 		if (op != null) {
 			this.updateInfoCompteClient();
@@ -104,6 +103,11 @@ public class OperationsManagementController implements Initializable {
 
 	@FXML
 	private void doAutre() {
+		Operation[] op = this.om.enregistrerVirement();
+		if (op != null) {
+			this.updateInfoCompteClient();
+			this.validateComponentState();
+		}
 	}
 
 	private void validateComponentState() {
