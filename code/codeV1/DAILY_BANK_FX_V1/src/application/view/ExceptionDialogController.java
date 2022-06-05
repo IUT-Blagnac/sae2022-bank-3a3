@@ -18,6 +18,7 @@ import model.orm.exception.ApplicationException;
 public class ExceptionDialogController implements Initializable {
 
 	// Etat application
+	@SuppressWarnings("unused")
 	private DailyBankState dbs;
 
 	// Fenêtre physique

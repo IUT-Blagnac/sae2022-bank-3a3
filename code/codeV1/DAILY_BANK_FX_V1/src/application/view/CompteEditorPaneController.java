@@ -5,16 +5,16 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import application.DailyBankState;
-import application.tools.AlertUtilities;
 import application.tools.ConstantesIHM;
 import application.tools.EditionMode;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
@@ -52,7 +52,7 @@ public class CompteEditorPaneController implements Initializable {
 		this.clientDuCompte = client;
 		this.em = mode;
 		if (cpte == null) {
-			this.compteEdite = new CompteCourant(0, 200, 0, "N", this.clientDuCompte.idNumCli);
+			this.compteEdite = new CompteCourant(0, 0, 0, "N", this.clientDuCompte.idNumCli);
 
 		} else {
 			this.compteEdite = new CompteCourant(cpte);
@@ -69,17 +69,32 @@ public class CompteEditorPaneController implements Initializable {
 			this.lblSolde.setText("Solde (premier dépôt)");
 			this.btnOk.setText("Ajouter");
 			this.btnCancel.setText("Annuler");
+			this.rbActif.setSelected(true);
+			this.rbInactif.setSelected(false);
+			this.rbInactif.setDisable(true);
+			this.rbActif.setDisable(true);
 			break;
 		case MODIFICATION:
-			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Modif de compte n'est pas implémenté", null,
-					AlertType.ERROR);
-			return null;
-		// break;
+			this.txtDecAutorise.setDisable(false);
+			this.txtSolde.setDisable(true);
+			this.lblMessage.setText("Informations sur le compte");
+			this.lblSolde.setText("Solde");
+			this.btnOk.setText("Ok");
+			this.btnCancel.setText("Annuler");
+			if(this.compteEdite.estCloture.equals("O")) {
+				this.rbActif.setSelected(false);
+				this.rbInactif.setSelected(true);
+			}else {
+				this.rbActif.setSelected(true);
+				this.rbInactif.setSelected(false);
+			}
+			break;
+			// break;
 		case SUPPRESSION:
 			//AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Modif de compte n'est pas implémenté", null,
 			//		AlertType.ERROR);
 			return null;
-		// break;
+			// break;
 		}
 
 		// Paramétrages spécifiques pour les chefs d'agences
@@ -113,9 +128,10 @@ public class CompteEditorPaneController implements Initializable {
 			try {
 				int val;
 				val = Integer.parseInt(this.txtDecAutorise.getText().trim());
-				this.compteEdite.debitAutorise = val;
+				if(val <= 0) {
+					this.compteEdite.debitAutorise = val;	
+				}
 			} catch (NumberFormatException nfe) {
-				this.txtDecAutorise.setText("" + this.compteEdite.debitAutorise);
 			}
 		}
 		return null;
@@ -132,10 +148,8 @@ public class CompteEditorPaneController implements Initializable {
 				}
 				this.compteEdite.solde = val;
 			} catch (NumberFormatException nfe) {
-				this.txtSolde.setText(String.format(Locale.ENGLISH, "%10.02f", this.compteEdite.solde));
 			}
 		}
-		this.txtSolde.setText(String.format(Locale.ENGLISH, "%10.02f", this.compteEdite.solde));
 		return null;
 	}
 
@@ -158,6 +172,12 @@ public class CompteEditorPaneController implements Initializable {
 	private Button btnOk;
 	@FXML
 	private Button btnCancel;
+	@FXML
+	private RadioButton rbActif;
+	@FXML
+	private RadioButton rbInactif;
+	@FXML
+	private ToggleGroup actifInactif;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -193,7 +213,37 @@ public class CompteEditorPaneController implements Initializable {
 	}
 
 	private boolean isSaisieValide() {
+		if(isNumber(this.txtDecAutorise) && Integer.parseInt(this.txtDecAutorise.getText()) <= 0 && isDouble(this.txtSolde) && Double.parseDouble(this.txtSolde.getText()) >= 0 ) {
+			if (this.rbActif.isSelected()) {
+				this.compteEdite.estCloture = "N";
+			} else {
+				this.compteEdite.estCloture = "O";
+			}
+			return true;
+		}
+		else {
+			this.txtDecAutorise.setText("" + this.compteEdite.debitAutorise);
+			this.txtSolde.setText(String.format(Locale.ENGLISH, "%10.02f", this.compteEdite.solde));
+		}
+		return false;
+		
+	}
 
-		return true;
+	private boolean isNumber(TextField message) {
+		try {
+			Integer.parseInt(message.getText());
+			return true;
+		} catch(NumberFormatException e) {
+			return false;
+		}
+	}
+
+	private boolean isDouble(TextField message) {
+		try {
+			Double.parseDouble(message.getText());
+			return true;
+		} catch(NumberFormatException e) {
+			return false;
+		}
 	}
 }

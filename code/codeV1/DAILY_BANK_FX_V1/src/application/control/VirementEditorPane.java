@@ -20,13 +20,16 @@ public class VirementEditorPane {
 	private VirementEditorPaneController vepc;
 	
 	/**
-	 * Permet l'affichage de la fenêtre de l'édition d'opération
+	 * Permet l'affichage de la fenêtre de l'édition de virement
 	 * @param _parentStage La fenêtre parente
 	 * @param _cm Les comptes du client
 	 * @param _dbstate La banque
 	 * @param c Client
 	 * @param cc Compte courant actuel
-	 * @see DailyBankState 
+	 * @see ComptesManagement
+	 * @see DailyBankState
+	 * @see Client
+	 * @see CompteCourant
 	 */
 	public VirementEditorPane(Stage _parentStage, ComptesManagement _cm, DailyBankState _dbstate, Client c, CompteCourant cc) {
 

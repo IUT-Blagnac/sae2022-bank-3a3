@@ -25,6 +25,7 @@ import model.data.Operation;
 public class OperationsManagementController implements Initializable {
 
 	// Etat application
+	@SuppressWarnings("unused")
 	private DailyBankState dbs;
 	private OperationsManagement om;
 
@@ -91,6 +92,7 @@ public class OperationsManagementController implements Initializable {
 	@FXML
 	private void doDebit() {
 		Operation op = this.om.enregistrerDebit();
+		System.out.println(this.compteConcerne.solde);
 		if (op != null) {
 			this.updateInfoCompteClient();
 			this.validateComponentState();
@@ -100,13 +102,9 @@ public class OperationsManagementController implements Initializable {
 	@FXML
 	private void doCredit() {
 		Operation op = this.om.enregistrerCredit();
-		System.out.println("enregistrer credit");
 		if (op != null) {
-			System.out.println("1");
 			this.updateInfoCompteClient();
-			System.out.println("2");
 			this.validateComponentState();
-			System.out.println("3");
 		}
 	}
 

@@ -70,7 +70,8 @@ public class OperationsManagement {
 	}
 
 	/**
-	 * 
+	 * Permet à l'utilisateur d'interagir avec le dialogue du controleur de le la gestion des opérations
+	 * @see OperationsManagementController
 	 */
 	public void doOperationsManagementDialog() {
 		this.omc.displayDialog();
@@ -89,6 +90,34 @@ public class OperationsManagement {
 				AccessOperation ao = new AccessOperation();
 
 				ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				this.primaryStage.close();
+				op = null;
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				op = null;
+			}
+		}
+		return op;
+	}
+	
+	/** 
+	 * Retourne le credit enregistré
+	 * @return l'opération
+	 */
+	public Operation enregistrerCredit() {
+
+		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dbs);
+		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.CREDIT);
+		if (op != null) {
+			try {
+				AccessOperation ao = new AccessOperation();
+
+				ao.insertCredit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
 
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);

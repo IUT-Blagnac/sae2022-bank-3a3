@@ -26,6 +26,7 @@ import model.data.CompteCourant;
 public class ComptesManagementController implements Initializable {
 
 	// Etat application
+	@SuppressWarnings("unused")
 	private DailyBankState dbs;
 	private ComptesManagement cm;
 
@@ -109,6 +110,12 @@ public class ComptesManagementController implements Initializable {
 
 	@FXML
 	private void doModifierCompte() {
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
+			this.cm.modifierCompte(cpt);
+			loadList();
+		}
 	}
 
 	@FXML
@@ -155,6 +162,7 @@ public class ComptesManagementController implements Initializable {
 		CompteCourant compte;
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
+			this.btnModifierCompte.setDisable(false);
 			compte = this.olCompteCourant.get(selectedIndice);
 			if(compte.estCloture.equals("O")) {
 				this.btnVoirOpes.setDisable(true);

@@ -210,6 +210,7 @@ public class AccessOperation {
 	 * @return Une chaine : TO_DATE ('j/m/a', 'DD/MM/YYYY') 'j/m/a' : jour mois an
 	 *         de d ex : TO_DATE ('25/01/2019', 'DD/MM/YYYY')
 	 */
+	@SuppressWarnings("unused")
 	private String dateToString(Date d) {
 		String sd;
 		Calendar cal;

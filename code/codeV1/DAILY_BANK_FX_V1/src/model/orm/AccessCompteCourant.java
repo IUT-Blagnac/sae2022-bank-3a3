@@ -138,11 +138,12 @@ public class AccessCompteCourant {
 			}
 			Connection con = LogToDatabase.getConnexion();
 
-			String query = "UPDATE CompteCourant SET " + "debitAutorise = ? " + "WHERE idNumCompte = ?";
+			String query = "UPDATE CompteCourant SET " + "debitAutorise = ? " + ", estCloture = ? " + "WHERE idNumCompte = ?";
 
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, cc.debitAutorise);
-			pst.setInt(2, cc.idNumCompte);
+			pst.setString(2, cc.estCloture);
+			pst.setInt(3, cc.idNumCompte);
 
 			System.err.println(query);
 
@@ -158,6 +159,14 @@ public class AccessCompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur accès", e);
 		}
 	}
+	/**
+	 * Ajouter un compte 
+	 * 
+	 * @param compte le nouveau compte courant
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 */
 	public void insertCompteCourant(CompteCourant compte)
 			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 
@@ -207,6 +216,14 @@ public class AccessCompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.INSERT, "Erreur accès", e);
 		}
 	}
+	/** 
+	 * Rend inactif un compte courant
+	 * 
+	 * @param compte IN le compte courant clé primaire 
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 */
 	public void supprimerCompteCourant(CompteCourant compte)
 			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 

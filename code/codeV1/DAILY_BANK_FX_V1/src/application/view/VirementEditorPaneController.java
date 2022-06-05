@@ -26,12 +26,13 @@ import model.data.Operation;
 
 public class VirementEditorPaneController implements Initializable {
 	// Etat application
+	@SuppressWarnings("unused")
 	private DailyBankState dbs;
 
 	// Fenêtre physique
 	private Stage primaryStage;
+	
 	// Données de la fenêtre
-	private Client clientDuCompte;
 	private CompteCourant compteConcerne;
 	private ComptesManagement cm;
 	private ObservableList<CompteCourant> olCompteCourants;
@@ -43,7 +44,6 @@ public class VirementEditorPaneController implements Initializable {
 		this.primaryStage = _primaryStage;
 		this.dbs = _dbstate;
 		this.cm = _cm;
-		this.clientDuCompte = client;
 		this.compteConcerne = compte;
 		this.configure();
 	}

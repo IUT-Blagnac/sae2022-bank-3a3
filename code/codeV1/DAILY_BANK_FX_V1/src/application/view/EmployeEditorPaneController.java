@@ -59,7 +59,7 @@ public class EmployeEditorPaneController implements Initializable {
 		switch (mode) {
 		case CREATION:
 			this.txtIdcemp.setDisable(true);
-		
+
 			this.txtNom.setDisable(false);
 			this.txtPrenom.setDisable(false);
 			this.txtIdAg.setDisable(true);
@@ -67,7 +67,7 @@ public class EmployeEditorPaneController implements Initializable {
 			this.txtMdp.setDisable(false);
 			this.rbChef.setSelected(true);
 			this.rbGuichetier.setSelected(false);
-			
+
 			if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
 				this.rbChef.setDisable(false);
 				this.rbGuichetier.setDisable(false);
@@ -81,7 +81,7 @@ public class EmployeEditorPaneController implements Initializable {
 			break;
 		case MODIFICATION:
 			if (employe.motPasse.length()==1) {
-				
+
 				this.txtIdcemp.setDisable(true);
 				this.txtNom.setDisable(true);
 				this.txtPrenom.setDisable(true);
@@ -101,36 +101,33 @@ public class EmployeEditorPaneController implements Initializable {
 				this.butOk.setText("Modifier");
 				this.butCancel.setText("Annuler");
 				this.butOk.setDisable(true);
-				
-				
-				
+
+
+
 			}else {
-				
-			
-			this.txtIdcemp.setDisable(true);
-			this.txtNom.setDisable(false);
-			this.txtPrenom.setDisable(false);
-			this.txtIdAg.setDisable(true);
-			this.txtLogin.setDisable(false);
-			this.txtMdp.setDisable(false);
-			this.rbChef.setSelected(true);
-			this.rbGuichetier.setSelected(false);
-			if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
-				this.rbChef.setDisable(false);
-				this.rbGuichetier.setDisable(false);
-			} else {
-				this.rbChef.setDisable(true);
-				this.rbGuichetier.setDisable(true);
-			}
-			this.lblMessage.setText("Informations employé");
-			this.butOk.setText("Modifier");
-			this.butCancel.setText("Annuler");
+
+
+				this.txtIdcemp.setDisable(true);
+				this.txtNom.setDisable(false);
+				this.txtPrenom.setDisable(false);
+				this.txtIdAg.setDisable(true);
+				this.txtLogin.setDisable(false);
+				this.txtMdp.setDisable(false);
+				this.rbChef.setSelected(true);
+				this.rbGuichetier.setSelected(false);
+				if (ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
+					this.rbChef.setDisable(false);
+					this.rbGuichetier.setDisable(false);
+				} else {
+					this.rbChef.setDisable(true);
+					this.rbGuichetier.setDisable(true);
+				}
+				this.lblMessage.setText("Informations employé");
+				this.butOk.setText("Modifier");
+				this.butCancel.setText("Annuler");
 			}
 			break;
 		case SUPPRESSION:
-			// ce mode n'est pas utilisé pour les Clients :
-			// la suppression d'un client n'existe pas il faut que le chef d'agence
-			// bascule son état "Actif" à "Inactif"
 			ApplicationException ae = new ApplicationException(Table.NONE, Order.OTHER, "SUPPRESSION EMPLOYE NON PREVUE",
 					null);
 			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
@@ -239,15 +236,15 @@ public class EmployeEditorPaneController implements Initializable {
 		} else {
 			this.employeEdite.droitsAccess = ConstantesIHM.AGENCE_GUICHETIER;
 		}
-		
+
 		if (this.employeEdite.motPasse.length() <=1) {
 			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le mdp ne doit etre supérieur à 1",
 					AlertType.WARNING);
 			this.txtMdp.requestFocus();
 			return false;
-			
+
 		}
-		
+
 		if (this.employeEdite.nom.isEmpty()) {
 			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le nom ne doit pas être vide",
 					AlertType.WARNING);
@@ -260,23 +257,6 @@ public class EmployeEditorPaneController implements Initializable {
 			this.txtPrenom.requestFocus();
 			return false;
 		}
-
-		/**String regex = "(0)[1-9][0-9]{8}";
-		if (!Pattern.matches(regex, this.employeEdite.telephone) || this.employeEdite.telephone.length() > 10) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le téléphone n'est pas valable",
-					AlertType.WARNING);
-			this.txtTel.requestFocus();
-			return false;
-		}
-		regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
-				+ "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
-		if (!Pattern.matches(regex, this.clientEdite.email) || this.clientEdite.email.length() > 20) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le mail n'est pas valable",
-					AlertType.WARNING);
-			this.txtMail.requestFocus();
-			return false;
-		}*/
-
 		return true;
 	}
 }

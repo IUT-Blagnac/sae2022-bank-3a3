@@ -187,7 +187,6 @@ public class ClientsManagementController implements Initializable {
 	}
 
 	private void validateComponentState() {
-		// Non implémenté => désactivé
 		this.btnDesactClient.setDisable(true);
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {

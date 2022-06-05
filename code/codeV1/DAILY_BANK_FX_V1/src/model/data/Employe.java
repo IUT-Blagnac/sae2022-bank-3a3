@@ -31,7 +31,7 @@ public class Employe {
 	@Override
 	public String toString() {
 		return "[" + this.idEmploye + "]" + " "  +  this.nom.toUpperCase() + " " + this.prenom
-				+  "(" + this.droitsAccess + ") " + "{ agence: "+ this.idAg + "}";
+				+  "(" + this.droitsAccess + ") " + "{agence: "+ this.idAg + "}";
 		
 		
 	}

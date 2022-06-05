@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.data.Client;
 import model.data.Employe;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -59,12 +58,10 @@ public class AccessEmploye {
 			} else {
 				rs.close();
 				pst.close();
-				// Non trouvé
 				return null;
 			}
 
 			if (rs.next()) {
-				// Trouvé plus de 1 ... bizarre ...
 				rs.close();
 				pst.close();
 				throw new RowNotFoundOrTooManyRowsException(Table.Employe, Order.SELECT,
@@ -198,6 +195,14 @@ public class AccessEmploye {
 		}
 	}
 
+	/**
+	 * Mise à jour d'un employé
+	 * 
+	 * @param employe L'employé
+	 * @throws RowNotFoundOrTooManyRowsException
+	 * @throws DataAccessException
+	 * @throws DatabaseConnexionException
+	 */
 	public void updateEmploye(Employe employe)
 			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 		try {
