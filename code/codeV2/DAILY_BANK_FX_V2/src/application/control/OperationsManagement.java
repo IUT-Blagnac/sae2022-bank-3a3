@@ -142,8 +142,6 @@ public class OperationsManagement {
 		this.cm = new ComptesManagement(this.primaryStage, this.dbs, this.clientDuCompte);
 		VirementEditorPane vep = new VirementEditorPane(primaryStage, cm, dbs, clientDuCompte, compteConcerne);
 		Operation[] op = vep.doVirementEditorDialog();
-		System.out.println(op[0]);
-		System.out.println(op[1]);
 		
 		if (op != null) {
 			try {
