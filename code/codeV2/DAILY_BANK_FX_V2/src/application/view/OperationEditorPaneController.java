@@ -159,7 +159,10 @@ public class OperationEditorPaneController implements Initializable {
 				this.txtMontant.requestFocus();
 				return;
 			}
-			if (this.compteEdite.solde - montant < this.compteEdite.debitAutorise) {
+			if(this.dbs.isChefDAgence()) {
+				
+			}
+			else if (this.compteEdite.solde - montant < this.compteEdite.debitAutorise) {
 				info = "Dépassement du découvert ! - Cpt. : " + this.compteEdite.idNumCompte + "  "
 						+ String.format(Locale.ENGLISH, "%12.02f", this.compteEdite.solde) + "  /  "
 						+ String.format(Locale.ENGLISH, "%8d", this.compteEdite.debitAutorise);

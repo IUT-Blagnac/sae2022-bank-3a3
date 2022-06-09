@@ -89,8 +89,9 @@ public class OperationsManagement {
 			try {
 				AccessOperation ao = new AccessOperation();
 
-				ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+				ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp,this.dbs);
 
+					
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
 				ed.doExceptionDialog();
@@ -146,7 +147,7 @@ public class OperationsManagement {
 		if (op != null) {
 			try {
 				AccessOperation ao = new AccessOperation();
-				ao.insertDebit(op[0].idNumCompte, op[0].montant, op[0].idTypeOp);
+				ao.insertDebit(op[0].idNumCompte, op[0].montant, op[0].idTypeOp, this.dbs);
 				ao.insertCredit(op[1].idNumCompte, op[1].montant, op[1].idTypeOp);
 
 			} catch (DatabaseConnexionException e) {

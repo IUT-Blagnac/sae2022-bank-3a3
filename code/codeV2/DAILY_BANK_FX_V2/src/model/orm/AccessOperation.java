@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import application.DailyBankState;
 import model.data.Operation;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -121,18 +122,19 @@ public class AccessOperation {
 	 * @param idNumCompte compte débité
 	 * @param montant     montant débité
 	 * @param typeOp      libellé de l'opération effectuée (cf TypeOperation)
+	 * @param dbs 		  la banque
 	 * @throws RowNotFoundOrTooManyRowsException
 	 * @throws DataAccessException
 	 * @throws DatabaseConnexionException
 	 * @throws ManagementRuleViolation
 	 */
-	public void insertDebit(int idNumCompte, double montant, String typeOp)
+	public void insertDebit(int idNumCompte, double montant, String typeOp, DailyBankState dbs)
 			throws DatabaseConnexionException, ManagementRuleViolation, DataAccessException {
 		try {
 			Connection con = LogToDatabase.getConnexion();
 			CallableStatement call;
 
-			String q = "{call Debiter (?, ?, ?, ?)}";
+			String q = "{call Debiter (?, ?, ?, ?, ?)}";
 			// les ? correspondent aux paramètres : cf. déf procédure (4 paramètres)
 			call = con.prepareCall(q);
 			// Paramètres in
@@ -143,12 +145,13 @@ public class AccessOperation {
 			// Paramètres out
 			call.registerOutParameter(4, java.sql.Types.INTEGER);
 			// 4 type du quatrième paramètre qui est déclaré en OUT, cf. déf procédure
-
+			call.setString(5, dbs.getEmpAct().droitsAccess);
+			
 			call.execute();
 
 			int res = call.getInt(4);
 
-			if (res != 0) { // Erreur applicative
+			if (res != 0 ) { // Erreur applicative
 				throw new ManagementRuleViolation(Table.Operation, Order.INSERT,
 						"Erreur de règle de gestion : découvert autorisé dépassé", null);
 			}
@@ -156,6 +159,7 @@ public class AccessOperation {
 			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
 		}
 	}
+
 	
 	/**
 	 * Enregistrement d'un crédit.

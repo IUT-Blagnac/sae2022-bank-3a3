@@ -151,7 +151,7 @@ public class ComptesManagement {
 					ao.insertCredit(compte.idNumCompte, -compte.solde, "Paiement Carte Bleue");
 				}
 				else if(compte.solde > 0) {
-					ao.insertDebit(compte.idNumCompte, compte.solde, "Retrait Carte Bleue");
+					ao.insertDebit(compte.idNumCompte, compte.solde, "Retrait Carte Bleue", this.dbs);
 				}
 				ac.supprimerCompteCourant(compte);
 
