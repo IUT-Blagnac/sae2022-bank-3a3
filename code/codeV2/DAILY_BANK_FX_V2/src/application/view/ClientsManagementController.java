@@ -192,7 +192,7 @@ public class ClientsManagementController implements Initializable {
 		if (selectedIndice >= 0) {
 			Client client = this.olc.get(selectedIndice);
 			this.btnComptesClient.setDisable(false);
-			if(client.estInactif.equals("N") && ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
+			if(client.estInactif.equals(ConstantesIHM.CLIENT_INACTIF) && ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
 				this.btnDesactClient.setDisable(false);
 			}
 			else if(client.estInactif.equals("O")) {
