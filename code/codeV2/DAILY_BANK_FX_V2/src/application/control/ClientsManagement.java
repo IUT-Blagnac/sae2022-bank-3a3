@@ -183,8 +183,4 @@ public class ClientsManagement {
 		}
 		return listeCli;
 	}
-	
-	public void gererPrelevements(Client c) {
-		
-	}
 }
