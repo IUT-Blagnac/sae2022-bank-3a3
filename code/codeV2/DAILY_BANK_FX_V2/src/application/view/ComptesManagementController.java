@@ -1,12 +1,24 @@
 package application.view;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import application.DailyBankApp;
 import application.DailyBankState;
 import application.control.ComptesManagement;
+import application.control.OperationsManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,6 +34,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.Operation;
 
 public class ComptesManagementController implements Initializable {
 
@@ -87,6 +100,8 @@ public class ComptesManagementController implements Initializable {
 	private Button btnModifierCompte;
 	@FXML
 	private Button btnSupprCompte;
+	@FXML
+	private Button btnPDF;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -98,83 +113,133 @@ public class ComptesManagementController implements Initializable {
 	}
 
 	@FXML
-	private void doVoirOperations() {
-		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0) {
-			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
-			this.cm.gererOperations(cpt);
-		}
-		this.loadList();
-		this.validateComponentState();
-	}
+	private void doPDF() {
 
-	@FXML
-	private void doModifierCompte() {
-		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0) {
-			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
-			this.cm.modifierCompte(cpt);
-			loadList();
-		}
-	}
+		Document doc = new Document();
+		
+		try {
+			
+			PdfWriter.getInstance(doc, new FileOutputStream("releve_mensuel_" + this.clientDesComptes.nom + this.clientDesComptes.prenom + ".pdf"));
+			doc.open();
 
-	@FXML
-	private void doSupprimerCompte() {
-		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0) {
-			CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
-			Alert dialog = new Alert(AlertType.CONFIRMATION);
-			dialog.setTitle("Confirmation");
-			dialog.setContentText("Voulez-vous vraiment cloturer le compte ?");
-			dialog.setHeaderText("Cloturer le compte ?");
-			dialog.initOwner(this.primaryStage);
-			Optional<ButtonType> reponse = dialog.showAndWait();
-			if (reponse.get() == ButtonType.OK) {
-				this.cm.supprimerCompte(cpt);
+			doc.add(new Paragraph("Relevé mensuel du client " + this.clientDesComptes.nom + " " + this.clientDesComptes.prenom));
+			
+			doc.add(new Paragraph("-------------------------------------------------------"));
+			
+			
+			for(int i = 0 ; i < this.olCompteCourant.size() ; i++) {
+				doc.add(new Paragraph(this.olCompteCourant.get(i).toString()));
+				doc.add(new Paragraph(" "));
+				
+				OperationsManagement ops = new OperationsManagement(primaryStage, dbs, clientDesComptes, this.olCompteCourant.get(i));
+				
+				ArrayList<Operation> listOp = ops.operationsEtSoldeDunCompte().getRight();
+
+				for(int j = 0 ; j < listOp.size() ; j ++) {
+					doc.add(new Paragraph(listOp.get(j).toString()));	
+				}
+				doc.add(new Paragraph(" "));
+			}
+			
+			
+			doc.close();
+			Desktop.getDesktop().open(new File("releve_mensuel_" + this.clientDesComptes.nom + this.clientDesComptes.prenom + ".pdf"));
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		}
+
+		@FXML
+		private void doVoirOperations() {
+			int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+			if (selectedIndice >= 0) {
+				CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
+				this.cm.gererOperations(cpt);
+			}
+			this.loadList();
+			this.validateComponentState();
+		}
+
+		@FXML
+		private void doModifierCompte() {
+			int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+			if (selectedIndice >= 0) {
+				CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
+				this.cm.modifierCompte(cpt);
 				loadList();
 			}
 		}
-	}
 
-	@FXML
-	private void doNouveauCompte() {
-		CompteCourant compte;
-		compte = this.cm.creerCompte();
-		if (compte != null) {
-			this.olCompteCourant.add(compte);
-			loadList();
+		@FXML
+		private void doSupprimerCompte() {
+			int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+			if (selectedIndice >= 0) {
+				CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
+				Alert dialog = new Alert(AlertType.CONFIRMATION);
+				dialog.setTitle("Confirmation");
+				dialog.setContentText("Voulez-vous vraiment cloturer le compte ?");
+				dialog.setHeaderText("Cloturer le compte ?");
+				dialog.initOwner(this.primaryStage);
+				Optional<ButtonType> reponse = dialog.showAndWait();
+				if (reponse.get() == ButtonType.OK) {
+					this.cm.supprimerCompte(cpt);
+					loadList();
+				}
+			}
 		}
-	}
 
-	private void loadList () {
-		ArrayList<CompteCourant> listeCpt;
-		listeCpt = this.cm.getComptesDunClient();
-		this.olCompteCourant.clear();
-		for (CompteCourant co : listeCpt) {
-			this.olCompteCourant.add(co);
+		@FXML
+		private void doNouveauCompte() {
+			CompteCourant compte;
+			compte = this.cm.creerCompte();
+			if (compte != null) {
+				this.olCompteCourant.add(compte);
+				loadList();
+			}
 		}
-	}
 
-	private void validateComponentState() {
-		// Non implémenté => désactivé
-		this.btnModifierCompte.setDisable(true);
-		this.btnSupprCompte.setDisable(true);
-		CompteCourant compte;
-		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0) {
-			this.btnModifierCompte.setDisable(false);
-			compte = this.olCompteCourant.get(selectedIndice);
-			if(compte.estCloture.equals("O")) {
+		private void loadList () {
+			ArrayList<CompteCourant> listeCpt;
+			listeCpt = this.cm.getComptesDunClient();
+			this.olCompteCourant.clear();
+			for (CompteCourant co : listeCpt) {
+				this.olCompteCourant.add(co);
+			}
+		}
+
+		private void validateComponentState() {
+			// Non implémenté => désactivé
+			this.btnModifierCompte.setDisable(true);
+			this.btnSupprCompte.setDisable(true);
+			this.btnPDF.setDisable(true);
+			
+			if (!this.olCompteCourant.isEmpty()) {
+				this.btnPDF.setDisable(false);
+			}
+			
+			CompteCourant compte;
+			int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+			if (selectedIndice >= 0) {
+				this.btnModifierCompte.setDisable(false);
+				compte = this.olCompteCourant.get(selectedIndice);
+				if(compte.estCloture.equals("O")) {
+					this.btnVoirOpes.setDisable(true);
+					this.btnSupprCompte.setDisable(true);
+				}
+				else {
+					this.btnVoirOpes.setDisable(false);
+					this.btnSupprCompte.setDisable(false);
+				}
+			} else {
 				this.btnVoirOpes.setDisable(true);
 				this.btnSupprCompte.setDisable(true);
 			}
-			else {
-				this.btnVoirOpes.setDisable(false);
-				this.btnSupprCompte.setDisable(false);
-			}
-		} else {
-			this.btnVoirOpes.setDisable(true);
-			this.btnSupprCompte.setDisable(true);
 		}
 	}
-}

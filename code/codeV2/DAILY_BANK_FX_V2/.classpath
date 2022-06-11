@@ -4,5 +4,6 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="LIBS/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="D:/Users/zouli/Documents/GitHub/sae2022-bank-3a3/code/codeV2/DAILY_BANK_FX_V2/LIBS/itextpdf-5.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
