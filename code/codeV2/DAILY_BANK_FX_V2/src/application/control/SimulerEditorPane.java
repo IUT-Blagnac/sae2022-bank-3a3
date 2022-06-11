@@ -4,9 +4,6 @@ import application.DailyBankApp;
 import application.DailyBankState;
 import application.tools.EditionMode;
 import application.tools.StageManagement;
-//import application.view.ClientEditorPaneController;
-//import application.view.ClientEditorPaneController2;
-
 import application.view.ClientsManagementController;
 import application.view.SimulerEditorPaneController;
 import javafx.fxml.FXMLLoader;

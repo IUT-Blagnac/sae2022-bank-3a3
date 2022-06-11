@@ -199,7 +199,7 @@ public class ClientsManagementController implements Initializable {
 
 	private void validateComponentState() {
 		this.btnDesactClient.setDisable(true);
-		this.Simul.setDisable(true);;
+		this.Simul.setDisable(true);
 		if(ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
 			this.Simul.setDisable(false);
 		}

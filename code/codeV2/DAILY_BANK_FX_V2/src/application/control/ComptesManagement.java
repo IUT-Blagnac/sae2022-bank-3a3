@@ -72,7 +72,7 @@ public class ComptesManagement {
 	}
 
 	/**
-	 * Permet à l'utilisateur d'interagir avec la gestion des opérations du controleur de la gestion des comptes d'un compte
+	 * Permet à l'utilisateur d'interagir avec la gestion des opérations du controleur de la gestion des comptes d'un client
 	 * @param cpt Le compte courant
 	 * @see OperationsManagement
 	 * @see CompteCourant
@@ -200,5 +200,15 @@ public class ComptesManagement {
 		}
 		return compte;
 		
+	}
+	
+	/**
+	 * Permet à l'utilisateur d'interagir avec la gestion des prélèvements du controleur de la gestion des comptes d'un client
+	 * @param client Le client
+	 * @see PrelevementsManagement
+	 */
+	public void gererPrelevements(Client client) {
+		PrelevementsManagement pm = new PrelevementsManagement(this.primaryStage, this.dbs, client);
+		pm.doPrelevementsManagementDialog();
 	}
 }

@@ -15,7 +15,6 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import application.DailyBankApp;
 import application.DailyBankState;
 import application.control.ComptesManagement;
 import application.control.OperationsManagement;
@@ -39,7 +38,6 @@ import model.data.Operation;
 public class ComptesManagementController implements Initializable {
 
 	// Etat application
-	@SuppressWarnings("unused")
 	private DailyBankState dbs;
 	private ComptesManagement cm;
 
@@ -102,6 +100,8 @@ public class ComptesManagementController implements Initializable {
 	private Button btnSupprCompte;
 	@FXML
 	private Button btnPDF;
+	@FXML
+	private Button btnVoirPrelevements;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -111,6 +111,11 @@ public class ComptesManagementController implements Initializable {
 	private void doCancel() {
 		this.primaryStage.close();
 	}
+	
+	@FXML
+	private void doVoirPrelevements() {
+		this.cm.gererPrelevements(this.clientDesComptes);
+	}
 
 	@FXML
 	private void doPDF() {
@@ -119,16 +124,16 @@ public class ComptesManagementController implements Initializable {
 		
 		try {
 			
-			PdfWriter.getInstance(doc, new FileOutputStream("releve_mensuel_" + this.clientDesComptes.nom + this.clientDesComptes.prenom + ".pdf"));
+			PdfWriter.getInstance(doc, new FileOutputStream("releve_mensuel.pdf"));
 			doc.open();
 
 			doc.add(new Paragraph("Relevé mensuel du client " + this.clientDesComptes.nom + " " + this.clientDesComptes.prenom));
-			
+			doc.add(new Paragraph(" "));
 			doc.add(new Paragraph("-------------------------------------------------------"));
-			
+			doc.add(new Paragraph(" "));
 			
 			for(int i = 0 ; i < this.olCompteCourant.size() ; i++) {
-				doc.add(new Paragraph(this.olCompteCourant.get(i).toString()));
+				doc.add(new Paragraph("- "+this.olCompteCourant.get(i).toString()));
 				doc.add(new Paragraph(" "));
 				
 				OperationsManagement ops = new OperationsManagement(primaryStage, dbs, clientDesComptes, this.olCompteCourant.get(i));
@@ -139,11 +144,13 @@ public class ComptesManagementController implements Initializable {
 					doc.add(new Paragraph(listOp.get(j).toString()));	
 				}
 				doc.add(new Paragraph(" "));
+				doc.add(new Paragraph("-------------------------------------------------------"));
+				doc.add(new Paragraph(" "));
 			}
 			
 			
 			doc.close();
-			Desktop.getDesktop().open(new File("releve_mensuel_" + this.clientDesComptes.nom + this.clientDesComptes.prenom + ".pdf"));
+			Desktop.getDesktop().open(new File("releve_mensuel.pdf"));
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -223,8 +230,11 @@ public class ComptesManagementController implements Initializable {
 			if (!this.olCompteCourant.isEmpty()) {
 				this.btnPDF.setDisable(false);
 			}
-			
+			this.btnVoirPrelevements.setDisable(true);
 			CompteCourant compte;
+			if(!this.olCompteCourant.isEmpty()) {
+				this.btnVoirPrelevements.setDisable(false);
+			}
 			int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 			if (selectedIndice >= 0) {
 				this.btnModifierCompte.setDisable(false);
