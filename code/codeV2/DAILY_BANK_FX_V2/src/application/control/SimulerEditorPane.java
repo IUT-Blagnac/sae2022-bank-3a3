@@ -14,13 +14,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.data.Client;
 
 
 public class SimulerEditorPane {
 
 	private Stage primaryStage;
-	private SimulerEditorPaneController cepc;
+	private SimulerEditorPaneController sepc;
 	
 	/**
 	 * Permet l'affichage de la fenêtre de la simulation d'emprunt et assurance pour les clients
@@ -45,8 +44,8 @@ public class SimulerEditorPane {
 			this.primaryStage.setTitle("Simulation et assurance d'emprunt");
 			this.primaryStage.setResizable(false);
 
-			this.cepc = loader.getController();
-			this.cepc.initContext(this.primaryStage, _dbstate);
+			this.sepc = loader.getController();
+			this.sepc.initContext(this.primaryStage, _dbstate);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,15 +54,11 @@ public class SimulerEditorPane {
 
 	/**
 	 * Permet à l'utilisateur d'interagir avec le dialogue du controleur de la simulation et assurance emprunt
-	 * @param client Le client
-	 * @param em Le mode d'édition
-	 * @return displayDialog permettant l'édition du client en fonction du mode d'édition
 	 * @see EditionMode
 	 * @see SimulerEditorPaneController
-	 * @see Client
 	 */
-	public Client doSimulerEditorDialog(Client client, EditionMode em) {
-		return this.cepc.displayDialog(client, em);
+	public void doSimulerEditorDialog() {
+		this.sepc.displayDialog();
 	}
 	
 }

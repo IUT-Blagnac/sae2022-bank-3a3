@@ -22,7 +22,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
-import model.data.Employe;
 
 
 public class ClientsManagementController implements Initializable {
@@ -82,7 +81,7 @@ public class ClientsManagementController implements Initializable {
 	private Button btnModifClient;
 	@FXML
 	private Button btnComptesClient;
-	
+
 	@FXML
 	private Button Simul;
 
@@ -162,20 +161,10 @@ public class ClientsManagementController implements Initializable {
 			}
 		}
 	}
-	
+
 	@FXML
 	private void SimulerEmprunt() {
-		
-		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
-		if (selectedIndice >= 0) {
-			Client cliMod = this.olc.get(selectedIndice);
-			Client result = this.cm.SimulerEditor(cliMod);
-			if (result != null) {
-				this.olc.set(selectedIndice, result);
-			}
-		}
-		
-		
+		this.cm.SimulerEditor();
 	}
 
 	@FXML
@@ -206,29 +195,31 @@ public class ClientsManagementController implements Initializable {
 		}
 	}
 
-	
-	
+
+
 	private void validateComponentState() {
 		this.btnDesactClient.setDisable(true);
+		this.Simul.setDisable(true);;
+		if(ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
+			this.Simul.setDisable(false);
+		}
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			Client client = this.olc.get(selectedIndice);
 			this.btnComptesClient.setDisable(false);
-			this.Simul.setDisable(false);
 			if(client.estInactif.equals("N") && ConstantesIHM.isAdmin(this.dbs.getEmpAct())) {
 				this.btnDesactClient.setDisable(false);
 			}
 			else if(client.estInactif.equals("O")) {
 				this.btnComptesClient.setDisable(true);
-				this.Simul.setDisable(true);
 			} 
 			this.btnModifClient.setDisable(false);
 		} else {
 			this.btnModifClient.setDisable(true);
 			this.btnComptesClient.setDisable(true);
-			this.Simul.setDisable(true);
+
 		}
 	}
-	
-	
+
+
 }

@@ -98,25 +98,9 @@ public class ClientsManagement {
 	 * @see Client
 	 */
 
-	public Client SimulerEditor(Client c) {
+	public void SimulerEditor() {
 		SimulerEditorPane cep = new SimulerEditorPane(this.primaryStage, this.dbs);
-		Client result = cep.doSimulerEditorDialog(c, EditionMode.MODIFICATION);
-		if (result != null) {
-			try {
-				AccessClient ac = new AccessClient();
-				ac.updateClient(result);
-			} catch (DatabaseConnexionException e) {
-				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
-				ed.doExceptionDialog();
-				result = null;
-				this.primaryStage.close();
-			} catch (ApplicationException ae) {
-				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
-				ed.doExceptionDialog();
-				result = null;
-			}
-		}
-		return result;
+		cep.doSimulerEditorDialog();
 	}
 	
 	
