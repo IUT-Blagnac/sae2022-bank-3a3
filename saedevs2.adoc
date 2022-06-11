@@ -12,13 +12,13 @@
 |1    |Guichetier     | Compte | Effectuer un virement| Andrew F compte à compte d'un même client | | | 
 |1    |Guichetier     | Compte | Clôturer| Andrew F | | | 
 |2    |Chef d’Agence     | Compte | Débit exceptionnel| Karim F | | | 
-|2    |Chef d’Agence     | Emprunt | Simuler emprunt| Egxon D | | | 
-|2    |Chef d’Agence     | Emprunt | Simuler assurance| Egxon D | | | 
-|2    |Guichetier     | Compte | Relevé PDF| Karim D | | | 
-|2    |Guichetier     | CRUD Prélèvement | C| Andrew D | | | 
-|2    |Guichetier     | CRUD Prélèvement | R| Andrew D | | | 
-|2    |Guichetier     | CRUD Prélèvement | U| Andrew D | | | 
-|2    |Guichetier     | CRUD Prélèvement | D| Andrew D | | | 
+|2    |Chef d’Agence     | Emprunt | Simuler emprunt| Egxon F | | | 
+|2    |Chef d’Agence     | Emprunt | Simuler assurance| Egxon F | | | 
+|2    |Guichetier     | Compte | Relevé PDF| Karim F | | | 
+|2    |Guichetier     | CRUD Prélèvement | C| Andrew F | | | 
+|2    |Guichetier     | CRUD Prélèvement | R| Andrew F | | | 
+|2    |Guichetier     | CRUD Prélèvement | U| Andrew F | | | 
+|2    |Guichetier     | CRUD Prélèvement | D| Andrew F | | | 
 |2    |Batch     | Prélèvements automatiques | || | | 
 |2    |Batch     | Reléves mensuels | || | | 
 
