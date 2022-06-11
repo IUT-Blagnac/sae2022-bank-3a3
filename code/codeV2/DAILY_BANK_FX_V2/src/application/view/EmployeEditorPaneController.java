@@ -75,7 +75,7 @@ public class EmployeEditorPaneController implements Initializable {
 				this.rbChef.setDisable(true);
 				this.rbGuichetier.setDisable(true);
 			}
-			this.lblMessage.setText("Informations sur le nouvel employé");
+			this.lblMessage.setText("Informations sur le nouveau employé");
 			this.butOk.setText("Ajouter");
 			this.butCancel.setText("Annuler");
 			break;

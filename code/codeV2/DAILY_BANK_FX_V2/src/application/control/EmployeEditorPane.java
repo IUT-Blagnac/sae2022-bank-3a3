@@ -16,8 +16,13 @@ import model.data.Employe;
 public class EmployeEditorPane {
 
 	private Stage primaryStage;
-	private EmployeEditorPaneController cepc;
+	private EmployeEditorPaneController eepc;
 
+	/**
+	 * Permet l'affichage de la fenêtre de l'édition d'employé
+	 * @param _parentStage la fenêtre parente
+	 * @param _dbstate La banque
+	 */
 	public EmployeEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
@@ -32,20 +37,26 @@ public class EmployeEditorPane {
 			this.primaryStage.initOwner(_parentStage);
 			StageManagement.manageCenteringStage(_parentStage, this.primaryStage);
 			this.primaryStage.setScene(scene);
-			this.primaryStage.setTitle("Gestion d'un client");
+			this.primaryStage.setTitle("Gestion d'un employé");
 			this.primaryStage.setResizable(false);
 
-			this.cepc = loader.getController();
+			this.eepc = loader.getController();
 			
-			this.cepc.initContext(this.primaryStage, _dbstate);
+			this.eepc.initContext(this.primaryStage, _dbstate);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	/**
+	 * Permet à l'utilisateur d'interagir avec le dialogue du controleur de l'édition d'employé
+	 * @param employe L'employé
+	 * @param em Mode d'édition
+	 * @return L'employé modifié
+	 */
 	public Employe doEmployeEditorDialog(Employe employe, EditionMode em) {
 		
-		return this.cepc.displayDialog(employe, em);
+		return this.eepc.displayDialog(employe, em);
 	}
 }

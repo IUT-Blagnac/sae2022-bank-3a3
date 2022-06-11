@@ -46,7 +46,7 @@ public class EmployeManagement {
 			this.primaryStage.initOwner(_parentStage);
 			StageManagement.manageCenteringStage(_parentStage, this.primaryStage);
 			this.primaryStage.setScene(scene);
-			this.primaryStage.setTitle("Gestion des employees");
+			this.primaryStage.setTitle("Gestion des employées");
 			this.primaryStage.setResizable(false);
 
 			this.emc = loader.getController();
@@ -63,7 +63,7 @@ public class EmployeManagement {
 	}
 
 	/**
-	 * Permet à l'utilisateur d'interagir avec le dialogue du controleur de le la gestion des opérations
+	 * Permet à l'utilisateur d'interagir avec le dialogue du controleur de la gestion des employés
 	 * @see EmployeManagementController
 	 */
 	public void doEmployeeManagementDialog() {
