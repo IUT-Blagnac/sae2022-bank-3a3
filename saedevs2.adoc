@@ -11,14 +11,14 @@
 |1    |Guichetier     | Compte | Créditer/Débiter| Karim F | | | 
 |1    |Guichetier     | Compte | Effectuer un virement| Andrew F compte à compte d'un même client | | | 
 |1    |Guichetier     | Compte | Clôturer| Andrew F | | | 
-|2    |Chef d’Agence     | Compte | Débit exceptionnel|| | | 
-|2    |Chef d’Agence     | Emprunt | Simuler emprunt|| | | 
-|2    |Chef d’Agence     | Emprunt | Simuler assurance|| | | 
-|2    |Guichetier     | Compte | Relevé PDF|| | | 
-|2    |Guichetier     | CRUD Prélèvement | C|| | | 
-|2    |Guichetier     | CRUD Prélèvement | R|| | | 
-|2    |Guichetier     | CRUD Prélèvement | U|| | | 
-|2    |Guichetier     | CRUD Prélèvement | D|| | | 
+|2    |Chef d’Agence     | Compte | Débit exceptionnel| Karim F | | | 
+|2    |Chef d’Agence     | Emprunt | Simuler emprunt| Egxon D | | | 
+|2    |Chef d’Agence     | Emprunt | Simuler assurance| Egxon D | | | 
+|2    |Guichetier     | Compte | Relevé PDF| Karim D | | | 
+|2    |Guichetier     | CRUD Prélèvement | C| Andrew D | | | 
+|2    |Guichetier     | CRUD Prélèvement | R| Andrew D | | | 
+|2    |Guichetier     | CRUD Prélèvement | U| Andrew D | | | 
+|2    |Guichetier     | CRUD Prélèvement | D| Andrew D | | | 
 |2    |Batch     | Prélèvements automatiques | || | | 
 |2    |Batch     | Reléves mensuels | || | | 
 
