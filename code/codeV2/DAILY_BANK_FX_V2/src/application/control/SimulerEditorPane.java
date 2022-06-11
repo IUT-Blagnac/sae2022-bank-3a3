@@ -4,8 +4,11 @@ import application.DailyBankApp;
 import application.DailyBankState;
 import application.tools.EditionMode;
 import application.tools.StageManagement;
-import application.view.ClientEditorPaneController;
+//import application.view.ClientEditorPaneController;
+//import application.view.ClientEditorPaneController2;
+
 import application.view.ClientsManagementController;
+import application.view.SimulerEditorPaneController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -14,21 +17,21 @@ import javafx.stage.Stage;
 import model.data.Client;
 
 
-public class ClientEditorPane {
+public class SimulerEditorPane {
 
 	private Stage primaryStage;
-	private ClientEditorPaneController cepc;
+	private SimulerEditorPaneController cepc;
 	
 	/**
-	 * Permet l'affichage de la fenêtre de l'édition de client
+	 * Permet l'affichage de la fenêtre de la simulation d'emprunt et assurance pour les clients
 	 * @param _parentStage La fenêtre parente
 	 * @param _dbstate La banque
 	 * @see DailyBankState
 	 */
-	public ClientEditorPane(Stage _parentStage, DailyBankState _dbstate) {
+	public SimulerEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
-			FXMLLoader loader = new FXMLLoader(ClientsManagementController.class.getResource("clienteditorpane.fxml"));
+			FXMLLoader loader = new FXMLLoader(ClientsManagementController.class.getResource("simulereditorpane.fxml"));
 			BorderPane root = loader.load();
 
 			Scene scene = new Scene(root, root.getPrefWidth()+20, root.getPrefHeight()+10);
@@ -39,7 +42,7 @@ public class ClientEditorPane {
 			this.primaryStage.initOwner(_parentStage);
 			StageManagement.manageCenteringStage(_parentStage, this.primaryStage);
 			this.primaryStage.setScene(scene);
-			this.primaryStage.setTitle("Gestion d'un client");
+			this.primaryStage.setTitle("Simulation et assurance d'emprunt");
 			this.primaryStage.setResizable(false);
 
 			this.cepc = loader.getController();
@@ -51,17 +54,16 @@ public class ClientEditorPane {
 	}
 
 	/**
-	 * Permet à l'utilisateur d'interagir avec le dialogue du controleur de l'édition de client
+	 * Permet à l'utilisateur d'interagir avec le dialogue du controleur de la simulation et assurance emprunt
 	 * @param client Le client
 	 * @param em Le mode d'édition
 	 * @return displayDialog permettant l'édition du client en fonction du mode d'édition
 	 * @see EditionMode
-	 * @see ClientEditorPaneController
+	 * @see SimulerEditorPaneController
 	 * @see Client
 	 */
-	public Client doClientEditorDialog(Client client, EditionMode em) {
+	public Client doSimulerEditorDialog(Client client, EditionMode em) {
 		return this.cepc.displayDialog(client, em);
 	}
-	
 	
 }

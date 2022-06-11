@@ -80,6 +80,11 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin>
                   </Button>
+                  <Button fx:id="Simul" mnemonicParsing="false" onAction="#SimulerEmprunt" prefHeight="37.0" prefWidth="217.0" text="Simuler un emprunt">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="30.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </bottom>

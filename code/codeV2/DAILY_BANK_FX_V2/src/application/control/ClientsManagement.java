@@ -90,6 +90,36 @@ public class ClientsManagement {
 		return result;
 	}
 	
+	
+	/**
+	 * Simule un emprunt
+	 * @param c Le client
+	 * @return Le client 
+	 * @see Client
+	 */
+
+	public Client SimulerEditor(Client c) {
+		SimulerEditorPane cep = new SimulerEditorPane(this.primaryStage, this.dbs);
+		Client result = cep.doSimulerEditorDialog(c, EditionMode.MODIFICATION);
+		if (result != null) {
+			try {
+				AccessClient ac = new AccessClient();
+				ac.updateClient(result);
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				result = null;
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				result = null;
+			}
+		}
+		return result;
+	}
+	
+	
 	/**
 	 * Rend inactif un client
 	 * @param c Le Client
