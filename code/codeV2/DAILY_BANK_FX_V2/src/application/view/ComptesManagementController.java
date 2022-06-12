@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -117,6 +118,7 @@ public class ComptesManagementController implements Initializable {
 		this.cm.gererPrelevements(this.clientDesComptes);
 	}
 
+	@SuppressWarnings("deprecation")
 	@FXML
 	private void doPDF() {
 
@@ -124,10 +126,10 @@ public class ComptesManagementController implements Initializable {
 		
 		try {
 			
-			PdfWriter.getInstance(doc, new FileOutputStream("releve_mensuel.pdf"));
+			PdfWriter.getInstance(doc, new FileOutputStream("releve_mensuel_" + this.clientDesComptes.nom + "_" + this.clientDesComptes.prenom + "_" + LocalDate.now().getMonthValue() +"_" + LocalDate.now().getYear() +".pdf"));
 			doc.open();
 
-			doc.add(new Paragraph("Relevé mensuel du client " + this.clientDesComptes.nom + " " + this.clientDesComptes.prenom));
+			doc.add(new Paragraph("Relevé mensuel du client " + this.clientDesComptes.nom + " " + this.clientDesComptes.prenom + " du " + LocalDate.now().getMonthValue() +"/" + LocalDate.now().getYear()));
 			doc.add(new Paragraph(" "));
 			doc.add(new Paragraph("-------------------------------------------------------"));
 			doc.add(new Paragraph(" "));
@@ -141,7 +143,9 @@ public class ComptesManagementController implements Initializable {
 				ArrayList<Operation> listOp = ops.operationsEtSoldeDunCompte().getRight();
 
 				for(int j = 0 ; j < listOp.size() ; j ++) {
-					doc.add(new Paragraph(listOp.get(j).toString()));	
+					if(listOp.get(j).dateOp.getMonth() == LocalDate.now().getMonthValue());{
+						doc.add(new Paragraph(listOp.get(j).toString()));	
+					}
 				}
 				doc.add(new Paragraph(" "));
 				doc.add(new Paragraph("-------------------------------------------------------"));
@@ -150,7 +154,7 @@ public class ComptesManagementController implements Initializable {
 			
 			
 			doc.close();
-			Desktop.getDesktop().open(new File("releve_mensuel.pdf"));
+			Desktop.getDesktop().open(new File("releve_mensuel_" + this.clientDesComptes.nom + "_" + this.clientDesComptes.prenom + "_" + LocalDate.now().getMonthValue() +"_" + LocalDate.now().getYear() +".pdf"));
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
