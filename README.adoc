@@ -37,7 +37,7 @@ ZOULI-BARRERE Karim
 |         | Recette V1 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V1/Cahier_de_recette_V1_nouvelle_version.pdf | 
 |         | Gantt V3 à jour   | Aucune modification https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V3/GANTTV3.pdf | 
 |         | `jar` projet | Nous avons codé : Clôturer un compte, créer un compte https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/code/jar/codeV1_2505.jar, version finale de la V1 https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/code/jar/codeV1_0506.jar (non fonctionnel) | 
-| 05/06   | Gantt V2 à Jour  |  |  
+| 05/06   | Gantt V2 à Jour  | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/GANTTV2_Nouvelle_Version_Finale.pdf  |  
 |         | Gantt V3 à Jour  | Aucune modification https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V3/GANTTV3.pdf |  
 |         | Doc. Util. V2 |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/Documentation_Utilisateur_V2.pdf  |           
 |         | Doc. Tec. V2 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/Documentation_Technique_V2.pdf   |     
