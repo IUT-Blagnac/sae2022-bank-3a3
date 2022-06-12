@@ -92,7 +92,6 @@ public class OperationsManagementController implements Initializable {
 	@FXML
 	private void doDebit() {
 		Operation op = this.om.enregistrerDebit();
-		System.out.println(this.compteConcerne.solde);
 		if (op != null) {
 			this.updateInfoCompteClient();
 			this.validateComponentState();

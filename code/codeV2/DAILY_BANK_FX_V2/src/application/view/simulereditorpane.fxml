@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.SimulerEditorPaneController">
    <bottom>
@@ -54,7 +55,10 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="120.0" text="Montant :" GridPane.rowIndex="6" />
+            <Label prefHeight="21.0" prefWidth="344.0" text="Montant :" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
             <TextField fx:id="montant" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" />
@@ -65,11 +69,17 @@
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
             </TextField>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="135.0" text="Nombre d'année" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="124.0" text="Taux d'intérêt :" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField fx:id="TA" prefHeight="31.0" prefWidth="110.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label prefHeight="21.0" prefWidth="338.0" text="Nombre d'année :" GridPane.columnIndex="2" GridPane.rowIndex="6">
                <GridPane.margin>
-                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
+            <Label prefHeight="21.0" prefWidth="375.0" text="Taux d'intérêt :" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
+            <TextField fx:id="TA" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
                </GridPane.margin>
             </TextField>
             <TextField fx:id="montantAss" GridPane.rowIndex="3">
@@ -79,7 +89,7 @@
             </TextField>
             <TextField fx:id="TauxAnnuel" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets right="10.0" />
+                  <Insets left="10.0" right="10.0" />
                </GridPane.margin>
             </TextField>
             <TextField fx:id="DureeMois" GridPane.columnIndex="2" GridPane.rowIndex="3">
@@ -87,9 +97,34 @@
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
             </TextField>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="157.0" text="Montant :" GridPane.rowIndex="2" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="165.0" text="Taux annuel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="163.0" text="Durée en mois" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label prefHeight="21.0" prefWidth="393.0" text="Montant :" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
+            <Label prefHeight="21.0" prefWidth="332.0" text="Taux annuel :" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
+            <Label prefHeight="21.0" prefWidth="350.0" text="Durée en mois :" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
+            <Label prefHeight="21.0" prefWidth="344.0" text="Informations emprunt" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label prefHeight="21.0" prefWidth="344.0" text="Informations assurance emprunt" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
    </top>
