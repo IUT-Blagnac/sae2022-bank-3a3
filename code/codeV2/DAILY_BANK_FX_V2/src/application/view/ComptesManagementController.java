@@ -191,8 +191,8 @@ public class ComptesManagementController implements Initializable {
 				CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
 				Alert dialog = new Alert(AlertType.CONFIRMATION);
 				dialog.setTitle("Confirmation");
-				dialog.setContentText("Voulez-vous vraiment cloturer le compte ?");
-				dialog.setHeaderText("Cloturer le compte ?");
+				dialog.setContentText("Voulez-vous vraiment clôturer le compte ?");
+				dialog.setHeaderText("Clôturer le compte ?");
 				dialog.initOwner(this.primaryStage);
 				Optional<ButtonType> reponse = dialog.showAndWait();
 				if (reponse.get() == ButtonType.OK) {
