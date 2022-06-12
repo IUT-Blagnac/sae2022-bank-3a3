@@ -97,7 +97,7 @@ public class ComptesManagementController implements Initializable {
 	@FXML
 	private Button btnModifierCompte;
 	@FXML
-	private Button btnSupprCompte;
+	private Button btnDesactiverCompte;
 	@FXML
 	private Button btnPDF;
 	@FXML
@@ -185,7 +185,7 @@ public class ComptesManagementController implements Initializable {
 		}
 
 		@FXML
-		private void doSupprimerCompte() {
+		private void doDesactiverCompte() {
 			int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 			if (selectedIndice >= 0) {
 				CompteCourant cpt = this.olCompteCourant.get(selectedIndice);
@@ -196,7 +196,7 @@ public class ComptesManagementController implements Initializable {
 				dialog.initOwner(this.primaryStage);
 				Optional<ButtonType> reponse = dialog.showAndWait();
 				if (reponse.get() == ButtonType.OK) {
-					this.cm.supprimerCompte(cpt);
+					this.cm.desactiverCompte(cpt);
 					loadList();
 				}
 			}
@@ -224,7 +224,7 @@ public class ComptesManagementController implements Initializable {
 		private void validateComponentState() {
 			// Non implémenté => désactivé
 			this.btnModifierCompte.setDisable(true);
-			this.btnSupprCompte.setDisable(true);
+			this.btnDesactiverCompte.setDisable(true);
 			this.btnPDF.setDisable(true);
 			
 			if (!this.olCompteCourant.isEmpty()) {
@@ -241,15 +241,15 @@ public class ComptesManagementController implements Initializable {
 				compte = this.olCompteCourant.get(selectedIndice);
 				if(compte.estCloture.equals("O")) {
 					this.btnVoirOpes.setDisable(true);
-					this.btnSupprCompte.setDisable(true);
+					this.btnDesactiverCompte.setDisable(true);
 				}
 				else {
 					this.btnVoirOpes.setDisable(false);
-					this.btnSupprCompte.setDisable(false);
+					this.btnDesactiverCompte.setDisable(false);
 				}
 			} else {
 				this.btnVoirOpes.setDisable(true);
-				this.btnSupprCompte.setDisable(true);
+				this.btnDesactiverCompte.setDisable(true);
 			}
 		}
 	}

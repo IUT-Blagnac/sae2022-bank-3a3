@@ -139,10 +139,10 @@ public class ComptesManagement {
 	}
 
 	/**
-	 * Supprime un compte
+	 * Désactive un compte
 	 * @param compte le compte courant
 	 */
-	public void supprimerCompte(CompteCourant compte) {
+	public void desactiverCompte(CompteCourant compte) {
 		AccessCompteCourant ac = new AccessCompteCourant();
 		if (compte != null) {
 			try {
