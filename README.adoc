@@ -40,7 +40,7 @@ ZOULI-BARRERE Karim
 | 05/06   | Gantt V2 à Jour  |  |  
 |         | Gantt V3 à Jour  | Aucune modification https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V3/GANTTV3.pdf |  
 |         | Doc. Util. V2 |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/Documentation_Utilisateur_V2.pdf  |           
-|         | Doc. Tec. V2 |    |     
+|         | Doc. Tec. V2 | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/Documentation_Technique_V2.pdf   |     
 |         | Code V2     | https://github.com/IUT-Blagnac/sae2022-bank-3a3/tree/main/code/codeV2/DAILY_BANK_FX_V2 |
 |         | Recette V2  | https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/V2/Cahier_de_recette_V2.pdf  |
 |         | `jar` projet |  https://github.com/IUT-Blagnac/sae2022-bank-3a3/blob/main/code/jar/codeV2.jar  |
