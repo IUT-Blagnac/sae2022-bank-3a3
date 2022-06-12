@@ -94,7 +94,7 @@ public class SimulerEditorPaneController implements Initializable {
 
 		String aff = "";
 
-		if (!montant.getText().isEmpty() && !annee.getText().isEmpty() && !TA.getText().isEmpty()) {
+		if (!montant.getText().isEmpty() && isNumber(this.montant) && !annee.getText().isEmpty() && isNumber(annee) && !TA.getText().isEmpty() && isNumber(TA)) {
 
 			int numTA= Integer.parseInt(TA.getText());
 			int numA= Integer.parseInt(annee.getText());
@@ -144,11 +144,11 @@ public class SimulerEditorPaneController implements Initializable {
 
 		String aff = "";
 
-		if (!montantAss.getText().isEmpty() && !TauxAnnuel.getText().isEmpty() && !DureeMois.getText().isEmpty()) {
+		if (!montantAss.getText().isEmpty() && isNumber(montantAss) && !TauxAnnuel.getText().isEmpty() && isFloat(TauxAnnuel) && !DureeMois.getText().isEmpty() && isNumber(DureeMois)) {
 
 			float numTA= Float.parseFloat(TauxAnnuel.getText());
-			float numA= Integer.parseInt(DureeMois.getText());
-			double numMontant= Integer.parseInt(montantAss.getText());
+			int numA= Integer.parseInt(DureeMois.getText());
+			int numMontant= Integer.parseInt(montantAss.getText());
 			float Tapl = numTA/100/12;
 			float tour = numA;
 			numA = numA - numA - numA;
@@ -183,20 +183,28 @@ public class SimulerEditorPaneController implements Initializable {
 
 
 			}
-
-
 			txt.setText(aff);
-
-
-
-
-
 		}
-
 
 	}
 
+	private boolean isNumber(TextField message) {
+		try {
+			Integer.parseInt(message.getText());
+			return true;
+		} catch(NumberFormatException e) {
+			return false;
+		}
+	}
 
+	private boolean isFloat(TextField message) {
+		try {
+			Float.parseFloat(message.getText());
+			return true;
+		} catch(NumberFormatException e) {
+			return false;
+		}
+	}
 
 
 
