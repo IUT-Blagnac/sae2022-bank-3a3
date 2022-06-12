@@ -46,7 +46,7 @@ public class EmployeManagement {
 			this.primaryStage.initOwner(_parentStage);
 			StageManagement.manageCenteringStage(_parentStage, this.primaryStage);
 			this.primaryStage.setScene(scene);
-			this.primaryStage.setTitle("Gestion des employées");
+			this.primaryStage.setTitle("Gestion des employés");
 			this.primaryStage.setResizable(false);
 
 			this.emc = loader.getController();
