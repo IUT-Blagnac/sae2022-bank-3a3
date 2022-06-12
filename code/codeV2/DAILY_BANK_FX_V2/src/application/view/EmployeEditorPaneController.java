@@ -236,15 +236,6 @@ public class EmployeEditorPaneController implements Initializable {
 		} else {
 			this.employeEdite.droitsAccess = ConstantesIHM.AGENCE_GUICHETIER;
 		}
-
-		if (this.employeEdite.motPasse.length() <=1) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le mdp ne doit etre supérieur à 1",
-					AlertType.WARNING);
-			this.txtMdp.requestFocus();
-			return false;
-
-		}
-
 		if (this.employeEdite.nom.isEmpty()) {
 			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le nom ne doit pas être vide",
 					AlertType.WARNING);
@@ -255,6 +246,18 @@ public class EmployeEditorPaneController implements Initializable {
 			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le prénom ne doit pas être vide",
 					AlertType.WARNING);
 			this.txtPrenom.requestFocus();
+			return false;
+		}
+		if (this.employeEdite.login.isEmpty()) {
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "Le login ne doit pas être vide",
+					AlertType.WARNING);
+			this.txtLogin.requestFocus();
+			return false;
+		}
+		if (this.employeEdite.motPasse.length() <=1) {
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, "La longueur du mdp doit etre supérieur à 1",
+					AlertType.WARNING);
+			this.txtMdp.requestFocus();
 			return false;
 		}
 		return true;
