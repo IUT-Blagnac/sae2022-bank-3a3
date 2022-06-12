@@ -96,6 +96,29 @@ public class EmployeManagement {
 		}
 		return result;
 	}
+	
+	/**
+	 * Met à jour l'employé en paramètre
+	 * @param emp Employé
+	 */
+	public void updateEmploye(Employe emp) {
+		if (emp != null) {
+			try {
+				AccessEmploye ac = new AccessEmploye();
+				ac.updateEmploye(emp);
+
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, e);
+				ed.doExceptionDialog();
+				emp = null;
+				this.primaryStage.close();
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dbs, ae);
+				ed.doExceptionDialog();
+				emp = null;
+			}
+		}
+	}
 
 	/**
 	 * Créer un nouveau employé

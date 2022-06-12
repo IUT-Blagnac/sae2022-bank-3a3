@@ -139,11 +139,11 @@ public class EmployeManagementController implements Initializable {
 
 		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
-			Employe cliMod = this.ole.get(selectedIndice);
+			Employe empMod = this.ole.get(selectedIndice);
 
 
 
-			Employe result = this.em.modifierEmploye(cliMod);
+			Employe result = this.em.modifierEmploye(empMod);
 			if (result != null) {
 				this.ole.set(selectedIndice, result);
 
@@ -155,9 +155,11 @@ public class EmployeManagementController implements Initializable {
 	private void doDesactiverEmploye() {
 		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
-			Employe cliMod = this.ole.get(selectedIndice);
-
-			cliMod.motPasse = "/";
+			Employe empMod = this.ole.get(selectedIndice);
+			empMod.motPasse = "/";
+			this.em.updateEmploye(empMod);
+			this.btnActiverEmp.setDisable(false);	
+			this.btnDesactEmp.setDisable(true);
 		}
 	}
 
@@ -165,8 +167,11 @@ public class EmployeManagementController implements Initializable {
 	private void doActiverEmploye() {
 		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
-			Employe cliMod = this.ole.get(selectedIndice);
-			cliMod.motPasse = "//";
+			Employe empMod = this.ole.get(selectedIndice);
+			empMod.motPasse = "//";
+			this.em.updateEmploye(empMod);
+			this.btnActiverEmp.setDisable(true);
+			this.btnDesactEmp.setDisable(false);	
 		}
 	}
 
@@ -184,12 +189,18 @@ public class EmployeManagementController implements Initializable {
 
 
 	private void validateComponentState() {
-
+		this.btnModifEmp.setDisable(true);
+		this.btnActiverEmp.setDisable(true);
+		this.btnDesactEmp.setDisable(true);
 		int selectedIndice = this.lvEmployes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			this.btnModifEmp.setDisable(false);
-			this.btnActiverEmp.setDisable(false);
-			this.btnDesactEmp.setDisable(false);
+			if(ole.get(selectedIndice).motPasse.length()>1) {
+				this.btnDesactEmp.setDisable(false);			
+			}
+			else {
+				this.btnActiverEmp.setDisable(false);
+			}
 		} else {
 			this.btnModifEmp.setDisable(true);
 			this.btnActiverEmp.setDisable(true);
