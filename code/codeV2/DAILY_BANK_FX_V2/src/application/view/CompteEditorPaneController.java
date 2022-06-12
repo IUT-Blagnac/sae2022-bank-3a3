@@ -33,7 +33,6 @@ public class CompteEditorPaneController implements Initializable {
 	private Client clientDuCompte;
 	private CompteCourant compteEdite;
 	private CompteCourant compteResult;
-
 	// Manipulation de la fenêtre
 	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
 		this.primaryStage = _primaryStage;

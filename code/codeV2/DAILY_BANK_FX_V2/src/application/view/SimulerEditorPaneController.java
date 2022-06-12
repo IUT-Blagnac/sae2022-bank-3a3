@@ -187,7 +187,6 @@ public class SimulerEditorPaneController implements Initializable {
 		}
 
 	}
-
 	private boolean isNumber(TextField message) {
 		try {
 			Integer.parseInt(message.getText());
